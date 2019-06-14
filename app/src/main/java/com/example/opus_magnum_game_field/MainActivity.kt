@@ -11,7 +11,6 @@ enum class ReagentsName{
 open class Reagent(var name:ReagentsName, var amount:Int){
     fun getImage(name: ReagentsName){
     }
-
 }
 
 class MainActivity : AppCompatActivity() {
@@ -19,4 +18,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+    var check = 100
 }

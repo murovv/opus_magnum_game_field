@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.opus_magnum_game_field">
+          xmlns:tools="http://schemas.android.com/tools" package="com.example.opus_magnum_game_field">
 
     <application
             android:allowBackup="true"
@@ -11,18 +10,22 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LevelsChoose">
-        </activity>
-        <activity
-                android:name=".MainActivity"
-                android:screenOrientation="landscape"
-                android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".MainActivity"
+                  android:screenOrientation="landscape"
+
+                  android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".LevelsChoose"
+                  android:screenOrientation="landscape"
+                  android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
+
     </application>
 
 </manifest>

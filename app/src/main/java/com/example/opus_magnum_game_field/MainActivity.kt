@@ -1,5 +1,6 @@
 package com.example.opus_magnum_game_field
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
             val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
             gameField.setImageBitmap(bitmap)
         }
+        exit.setOnClickListener{
+            val intent = Intent(this,LevelsChoose::class.java)
+            startActivity(intent)
+        }
     }
+
     var check = 100
 }

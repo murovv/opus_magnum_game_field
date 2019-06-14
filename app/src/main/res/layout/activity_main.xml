@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context=".MainActivity"
+        >
+    <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/operators_and_canvas"
+            android:orientation="vertical" android:layout_toEndOf="@+id/item_panel"
+
+            android:layout_toStartOf="@+id/operations1">
+        <ListView android:layout_width="match_parent"
+                  android:layout_height="100dp"
+        android:layout_alignParentBottom="true"></ListView>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="ИЛЮХИНА ШТУКА"/>
+
+    </RelativeLayout>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/item_panel">
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reagents"
+                android:id="@+id/reagents"/>
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product"
+                />
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manipulators"
+                android:id="@+id/manipulators"/>
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Operators"
+                android:id="@+id/operators"/>
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp">
+        </ListView>
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/operations2"
+            android:layout_alignParentRight="true">
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop"
+                android:id="@+id/drop"
+        />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Rotate \nRight"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Pull in"
+                android:id="@+id/pull_in"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Wait"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Delete\n all"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/settings"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_toLeftOf="@id/operations2"
+                  android:orientation="vertical"
+    android:id="@+id/operations1">
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grab"
+                android:id="@+id/grab"
+        />
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rotate\n Left"
+
+                android:id="@+id/rleft"
+        />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Pull out"
+                android:id="@+id/pull_out"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="return"
+                android:id="@+id/returnButton"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="delete\n all"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="EXIT"
+                android:id="@+id/exit"
+        />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

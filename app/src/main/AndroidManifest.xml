@@ -18,20 +18,21 @@
 
                   android:theme="@style/Theme.AppCompat.NoActionBar">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".LevelsChoose"
                   android:screenOrientation="landscape"
                   android:theme="@style/Theme.AppCompat.NoActionBar">
 
         </activity>
-        <activity android:name=".MainActivity1"
+        <activity android:name=".MainMenu"
                   android:screenOrientation="landscape"
                   android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
           
         </activity>
 

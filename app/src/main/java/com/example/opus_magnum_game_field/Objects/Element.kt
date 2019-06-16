@@ -2,44 +2,46 @@ package com.example.opus_magnum_game_field.Objects
 
 import android.graphics.Bitmap
 
-class Element(
-    internal val cost: Int,
-    internal val img: Bitmap,
-    internal val name: String,
-    internal var mainCellCoordinates: Array<Int>,
-    internal var rot: Int,
-    internal var numberOfCells: Int){
-    internal var coordinates: Array<Array<Int>>? = null
-    fun getCost(): Int {
+
+open class Element(
+    internal open val cost: Int,
+    internal open val img: Bitmap,
+    internal open val name: String,
+    internal open var mainCellCoordinates: Array<Int>,
+    internal open var rot: Int = 30,
+    internal open var numberOfCells: Int){
+    internal open var coordinates: Array<Array<Int>>? = countCoordinates()
+    open fun getCost(): Int {
         return cost
     }
-    fun getImg(): Bitmap {
+    open fun getImg(): Bitmap {
         return img
     }
-    fun getName(): String {
+    open fun getName(): String {
         return name
     }
-    fun getCoordinates(): Array<Array<Int>> {
+    open fun getCoordinates(): Array<Array<Int>> {
         return coordinates!!
     }
-    fun getMainCellCoordinates(): Array<Int> {
+    open fun getMainCellCoordinates(): Array<Int> {
         return mainCellCoordinates
     }
-    fun getRot(): Int {
+    open fun getRot(): Int {
         return rot
     }
-    fun setRot(rot:Int){
+    open fun setRot(rot:Int){
         this.rot = rot
     }
-    fun setMainCellCoordinates(mainCellCoordinates: Array<Int>) {
+    open fun setMainCellCoordinates(mainCellCoordinates: Array<Int>) {
         this.mainCellCoordinates = mainCellCoordinates
     }
-    fun countCoordinates(){
+    open fun countCoordinates():Array<Array<Int>>{
         coordinates = if(numberOfCells==1){
             Array(1){mainCellCoordinates}
         } else {
             Array(2){mainCellCoordinates; updateCoordinate(mainCellCoordinates, rot)}
         }
+        return coordinates!!
     }
     private fun updateCoordinate(coordinates:Array<Int>, rot: Int):Array<Int>{
         val resultCoordinates = Array(2){0}

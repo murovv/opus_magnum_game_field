@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         tools:context=".MainActivity"
-        >
+        android:id="@+id/background_layout">
     <RelativeLayout
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
@@ -17,13 +17,13 @@
             android:layout_toStartOf="@+id/operations1">
         <ListView android:layout_width="match_parent"
                   android:layout_height="100dp"
-        android:layout_alignParentBottom="true"></ListView>
+                  android:layout_alignParentBottom="true"></ListView>
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="310dp" app:srcCompat="?android:attr/colorAccent"
                 android:id="@+id/gameField"
                 android:layout_marginBottom="1dp"
-                android:layout_marginEnd="0dp" />
+                android:layout_marginEnd="0dp"/>
 
     </RelativeLayout>
     <LinearLayout android:layout_width="wrap_content"
@@ -76,15 +76,15 @@
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Delete\n all" android:id="@+id/deleteall"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Settings"
-        android:id="@+id/settings"/>
+                android:text="Settings"
+                android:id="@+id/settings"/>
 
     </LinearLayout>
     <LinearLayout android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_toLeftOf="@id/operations2"
                   android:orientation="vertical"
-    android:id="@+id/operations1">
+                  android:id="@+id/operations1">
         <Button android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Grab"

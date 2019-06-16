@@ -7,7 +7,7 @@
         tools:context=".MainMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical" android:id="@+id/background_layout">
 
     <!--
     <data>
@@ -34,12 +34,12 @@
                     android:text="Quit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"/>
+                    android:layout_alignParentStart="true" android:id="@+id/quit_button"/>
             <Button
                     android:text="Profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true" android:id="@+id/profile_button"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 android:text="Continue"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:id="@+id/continue_button"/>
     </LinearLayout>
 
     <LinearLayout
@@ -81,7 +81,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:text="Donate"
-                />
+                        android:id="@+id/donate_button"/>
             </RelativeLayout>
         </LinearLayout>
 
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Choose Level"
-                android:id="@+id/choose_level"/>
+                        android:id="@+id/choose_level"/>
             </LinearLayout>
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="0dp"
@@ -106,7 +106,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Settings"/>
+                        android:text="Settings" android:id="@+id/settings_button"/>
             </LinearLayout>
         </LinearLayout>
         <RelativeLayout
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:text="Credits"/>
+                    android:text="Credits" android:id="@+id/credits_button"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

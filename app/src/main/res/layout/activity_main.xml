@@ -21,8 +21,9 @@
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="310dp" app:srcCompat="?android:attr/colorAccent"
-                android:id="@+id/gameField" android:layout_above="@+id/_dynamic" android:layout_marginBottom="1dp"
-                android:layout_marginEnd="0dp" android:layout_alignEnd="@+id/_dynamic"/>
+                android:id="@+id/gameField"
+                android:layout_marginBottom="1dp"
+                android:layout_marginEnd="0dp" />
 
     </RelativeLayout>
     <LinearLayout android:layout_width="wrap_content"
@@ -49,7 +50,8 @@
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="30dp"
+                android:id="@+id/item_list">
         </ListView>
 
     </LinearLayout>

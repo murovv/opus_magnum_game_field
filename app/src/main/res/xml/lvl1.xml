@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Level lvl="1">
+    <Reagents>
+        <Reagent
+                 amount="1">Земля
+        </Reagent>
+        <Reagent>
+            ухй
+        </Reagent>
+        <Reagent>
+            ухй
+        </Reagent>
+        <Reagent>
+            ухй
+        </Reagent>
+        <Reagent>
+            ухй
+        </Reagent>
+        <Reagent>
+            ухй
+        </Reagent>
+        <Reagent>
+            ухй
+        </Reagent>
+
+    </Reagents>
+    <Products>
+        <Product
+                 amount="1">Вода
+        </Product>
+    </Products>
+</Level>
+

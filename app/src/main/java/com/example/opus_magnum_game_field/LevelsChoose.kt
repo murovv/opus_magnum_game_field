@@ -10,7 +10,7 @@ class LevelsChoose : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_levels_choose)
-        button_lvl1.setOnClickListener {
+        bt_lvl1.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }

@@ -108,6 +108,9 @@
                 android:text="EXIT"
                 android:id="@+id/exit"
         />
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/choosen_item"/>
 
 
     </LinearLayout>

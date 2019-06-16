@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Adapter
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
 fun buildLevel1(resources:Resources): ArrayList<String> {
@@ -27,7 +28,7 @@ fun buildLevel1(resources:Resources): ArrayList<String> {
                 products.add(xrp.text.toString())
             }
         }
-        Log.d("БЛЯТЬ","${xrp.name}")
+
         xrp.next()
     }
     return reactives
@@ -47,11 +48,13 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         var arr = buildLevel1(resources)
-        if(arr.isEmpty()){
-            Log.d("БЛЯТЬ","ПИЗДЕЦ")
-        }
+
         val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arr)
         item_list.adapter = adapter
+        item_list.setOnItemClickListener{parent, view, position, id ->
+            var textView: TextView = view as TextView
+            choosen_item.text = textView.text.toString()
+        }
     }
 
     var check = 100

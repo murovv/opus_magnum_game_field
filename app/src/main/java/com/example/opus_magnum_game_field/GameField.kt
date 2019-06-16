@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.content.res.XmlResourceParser
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,8 +45,7 @@ class MainActivity : AppCompatActivity() {
             gameField.setImageBitmap(bitmap)
         }
         exit.setOnClickListener{
-            val intent = Intent(this,LevelsChoose::class.java)
-            startActivity(intent)
+            finish()
         }
         var arr = buildLevel1(resources)
 

@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
+        gameField.setImageBitmap(bitmap)
         drop.setOnClickListener{
             val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
             gameField.setImageBitmap(bitmap)

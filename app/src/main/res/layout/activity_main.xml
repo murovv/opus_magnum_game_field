@@ -36,7 +36,7 @@
         <Button android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Product"
-                />
+                android:id="@+id/product"/>
 
         <Button android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,14 +65,14 @@
                 android:id="@+id/drop"
         />
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Rotate \nRight"/>
+                android:text="Rotate \nRight" android:id="@+id/rright"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Pull in"
                 android:id="@+id/pull_in"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Wait"/>
+                android:text="Wait" android:id="@+id/wait"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Delete\n all"/>
+                android:text="Delete\n all" android:id="@+id/deleteall"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="Settings"
         android:id="@+id/settings"/>
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:text="Rotate\n Left"
 
-                android:id="@+id/rleft"
+                android:id="@+id/rright"
         />
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Pull out"
@@ -101,7 +101,7 @@
                 android:text="return"
                 android:id="@+id/returnButton"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="delete\n all"/>
+                android:text="delete\n" android:id="@+id/delete"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="EXIT"
                 android:id="@+id/exit"

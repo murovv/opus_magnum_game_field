@@ -5,13 +5,13 @@ import android.content.pm.ActivityInfo
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main1.*
+import kotlinx.android.synthetic.main.MainMenu.*
 
 class MainMenu : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main1)
+        setContentView(R.layout.MainMenu)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE //horizontal app
 

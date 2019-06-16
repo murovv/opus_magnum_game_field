@@ -7,15 +7,16 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity"
         android:orientation="vertical">
+
+
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
             android:id="@+id/linear_top"
     >
 
         <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
         >
@@ -40,181 +41,209 @@
 
     </LinearLayout> <!-- top bar-->
 
-    <LinearLayout
+    <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:id="@+id/linear_flasks_top">
+            android:layout_height="match_parent">
 
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="lvl1"
-                    android:id="@+id/button_lvl1"/>
-
-
-        </RelativeLayout> <!-- first -->
-
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="lvl2"
-                    android:id="@+id/button_lvl2"
-            />
-        </RelativeLayout> <!-- second -->
-
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1">
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="lvl3"
-                    android:id="@+id/button_lvl3"
-
-            />
-        </RelativeLayout> <!-- third -->
-
-    </LinearLayout> <!-- flasks = levels higher of them-->
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:id="@+id/linear_conveyor_top">
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="conveyor"
-        />
-    </LinearLayout> <!-- conveyor first -->
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:id="@+id/linear_flasks_bottom">
-
-
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="lvl4"
-                    android:id="@+id/button_lvl4"
-            />
-        </RelativeLayout> <!-- first here -->
-
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="lvl5"
-                    android:id="@+id/button_lvl5"
-            />
-
-        </RelativeLayout> <!-- second here -->
-
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1">
-
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="lvl6"
-                    android:id="@+id/button_lvl6"
-            />
-
-        </RelativeLayout> <!-- third here-->
-
-    </LinearLayout> <!-- flasks = levels lower of them -->
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:id="@+id/linear_conveyor_bottom">
-
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="conveyor"
-        />
-    </LinearLayout> <!-- conveyor second -->
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="0.1"
-            android:id="@+id/linear_changing_level">
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
             <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+            >
 
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button_left"
-                        android:text="left"
-                        android:layout_alignParentEnd="true"
+                        android:id="@+id/bt_lvl1"
+                        android:text="lvl1"
                 />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl2"
+                        android:text="lvl2"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl3"
+                        android:text="lvl3"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl4"
+                        android:text="lvl4"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl5"
+                        android:text="lvl5"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl6"
+                        android:text="level6"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl7"
+                        android:text="level7"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl8"
+                        android:text="level8"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl9"
+                        android:text="level9"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl10"
+                        android:text="level10"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl11"
+                        android:text="level11"
+                />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bt_lvl12"
+                        android:text="level12"
+                />
+
 
             </RelativeLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button_right"
-                    android:text="right"
-            />
-
-        </LinearLayout>
-
-    </LinearLayout> <!-- changing levels-->
+    </HorizontalScrollView>
 
 
 </LinearLayout>

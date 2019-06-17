@@ -1,14 +1,15 @@
 package com.example.opus_magnum_game_field.Objects
 
+import android.content.Context
 import android.graphics.Bitmap
 
 open class Product(
+    context: Context,
     cost: Int,
-    img: Bitmap,
     name: String,
     mainCellCoordinates: Array<Int>,
     rot: Int,
     numberOfCells: Int
-) : Element(cost, img, name, mainCellCoordinates, rot, numberOfCells){
+) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells){
     var amount:Int? = null
 }

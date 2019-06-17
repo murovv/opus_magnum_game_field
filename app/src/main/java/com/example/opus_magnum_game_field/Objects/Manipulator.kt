@@ -7,26 +7,30 @@ class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Arr
     Element(cost, img, name, mainCellCoordinates, rot, numberOfCells = 2) {
     var takenElement:Element? = null
     var coordinateOfEar = coordinates!![1]
-    val startRotation = rot
+    private val startRotation = rot
     fun rotateLeft(canvas: Canvas){
+        animateRotateLeft(canvas)
         rot += 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
         if (takenElement != null) {
+            (takenElement!! as Reagents).animateRotationMovements(canvas, coordinateOfEar, mainCellCoordinates)
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        animateRotateLeft(canvas)
+
     }
     fun rotateRight(canvas: Canvas){
+        animateRotateRight(canvas)
         rot -= 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
         if (takenElement != null) {
+            (takenElement!! as Reagents).animateRotationMovements(canvas, coordinateOfEar, mainCellCoordinates)
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        animateRotateRight(canvas)
+
     }
     fun grab(element: Element?){
         takenElement = element
@@ -37,14 +41,16 @@ class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Arr
         return buffer
     }
     fun returnToStart(canvas: Canvas){
+        animationReturn(canvas)
         rot = startRotation
         countCoordinates()
         coordinateOfEar = coordinates!![1]
         if (takenElement != null) {
+            (takenElement!! as Reagents).animateRotationMovements(canvas, coordinateOfEar, mainCellCoordinates)
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        returnToStart(canvas)
+
     }
     private fun animateRotateLeft(canvas: Canvas){
         //TODO Реализовать анимацию поворота налево без коллизий
@@ -54,5 +60,6 @@ class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Arr
     }
     private fun animationReturn(canvas: Canvas){
         //TODO Реализовать анимацию возвращения к изначальной позиции без коллизий
+
     }
 }

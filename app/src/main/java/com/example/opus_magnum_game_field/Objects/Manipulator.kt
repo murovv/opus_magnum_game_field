@@ -1,14 +1,24 @@
 package com.example.opus_magnum_game_field.Objects
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
+import android.content.Context
+import android.graphics.*
+
+class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
+    Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img) {
+
+    var takenElement: Element? = null
+
 
 open class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
     Element(cost, img, name, mainCellCoordinates, rot, numberOfCells = 2) {
     var takenElement:Element? = null
+
     var coordinateOfEar = coordinates!![1]
+
     val startRotation = rot
-    fun rotateLeft(canvas: Canvas){
+
+    fun rotateLeft(canvas: Canvas) {
+        animateRotateLeft(canvas)
         rot += 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -16,9 +26,9 @@ open class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        animateRotateLeft(canvas)
     }
-    fun rotateRight(canvas: Canvas){
+
+    fun rotateRight(canvas: Canvas) {
         rot -= 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -28,15 +38,18 @@ open class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates
         }
         animateRotateRight(canvas)
     }
-    fun grab(element: Element?){
+
+    fun grab(element: Element?) {
         takenElement = element
     }
-    fun drop():Element?{
+
+    fun drop(): Element? {
         val buffer = takenElement
         takenElement = null
         return buffer
     }
-    fun returnToStart(canvas: Canvas){
+
+    fun returnToStart(canvas: Canvas) {
         rot = startRotation
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -46,13 +59,42 @@ open class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates
         }
         returnToStart(canvas)
     }
-    private fun animateRotateLeft(canvas: Canvas){
-        //TODO Реализовать анимацию поворота налево без коллизий
+
+    private fun animateRotateLeft(canvas: Canvas) {
+        canvas.translate(
+            ((canvas.width * 29 / 3) * mainCellCoordinates[0] + (canvas.width * 29 / 6)).toFloat(),
+            ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat() + (canvas.height * 23 / 6)
+        )
+        for (i: Int in 1..60) {
+            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+            canvas.rotate(-(((rot + i) * Math.PI / 180).toFloat()))
+            val paint = Paint()
+            canvas.drawBitmap(
+                img!!, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
+                ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat(), paint
+            )
+            canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
+        }
     }
-    private fun animateRotateRight(canvas: Canvas){
-        //TODO Реализовать анимацию поворота направо без коллизий
+
+    private fun animateRotateRight(canvas: Canvas) {
+        canvas.translate(
+            ((canvas.width * 29 / 3) * mainCellCoordinates[0] + (canvas.width * 29 / 6)).toFloat(),
+            ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat() + (canvas.height * 23 / 6)
+        )
+        for (i: Int in 1..60) {
+            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+            canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
+            val paint = Paint()
+            canvas.drawBitmap(
+                img!!, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
+                ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat(), paint
+            )
+            canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
+        }
     }
-    private fun animationReturn(canvas: Canvas){
+
+    private fun animationReturn(canvas: Canvas) {
         //TODO Реализовать анимацию возвращения к изначальной позиции без коллизий
     }
 }

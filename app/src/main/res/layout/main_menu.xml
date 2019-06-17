@@ -25,30 +25,82 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4">
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
-            <Button
-                    android:text="Quit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true" android:id="@+id/quit_button"/>
-            <Button
-                    android:text="Profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true" android:id="@+id/profile_button"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textColor="#000000"
-                    android:textSize="30dp"
-                    android:text="OPUS MAGNUM 2.0"
-            />
-        </RelativeLayout>
+            android:layout_weight="4"
+            android:orientation="horizontal">
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:layout_weight="1"
+                          android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1"
+                              android:orientation="vertical">
+                    <Button
+                            android:text="Quit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/quit_button"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:layout_weight="1">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="6">
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textColor="#000000"
+                        android:textSize="30dp"
+                        android:text="OPUS MAGNUM 2.0"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:layout_weight="1"
+                          android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1"
+                              android:orientation="vertical">
+                    <Button
+                            android:text="Profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/profile_button"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:layout_weight="1">
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -70,24 +122,46 @@
             android:layout_weight="3"
             android:orientation="horizontal">
         <LinearLayout android:layout_width="0dp"
-                      android:layout_height="wrap_content"
+                      android:layout_height="match_parent"
                       android:layout_weight="1">
-            <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="Donate"
-                        android:id="@+id/donate_button"/>
-            </RelativeLayout>
-        </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_weight="1"
+                          android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
 
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Donate"
+                            android:id="@+id/donate_button"
+                            android:background="@android:drawable/btn_star_big_on"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_weight="1">
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_weight="1">
+            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1">
             <LinearLayout android:layout_width="match_parent"
@@ -108,17 +182,49 @@
                         android:layout_height="wrap_content"
                         android:text="Settings" android:id="@+id/settings_button"/>
             </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:layout_weight="1">
+            </LinearLayout>
         </LinearLayout>
-        <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:text="Credits" android:id="@+id/credits_button"/>
-        </RelativeLayout>
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_weight="1"
+                          android:orientation="vertical">
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_weight="1">
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_weight="1"
+                          android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="0dp"
+                              android:layout_weight="1">
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Credits"
+                            android:id="@+id/credits_button"
+                            android:background="@android:drawable/btn_star_big_on"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

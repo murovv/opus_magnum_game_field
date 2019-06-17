@@ -18,13 +18,14 @@ class MainMenu : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE //horizontal app
         background_layout.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.background))
         //НЕ ТРОЖЬ УБЬЕТ
-        /*quit_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
+        ///*
+        quit_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
         donate_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
         credits_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
         profile_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
         choose_level.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
         continue_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))
-        settings_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))*/
+        settings_button.background = BitmapDrawable(resources,BitmapFactory.decodeResource(resources,R.drawable.buttons))//*/
         val width = Resources.getSystem().displayMetrics.widthPixels
         val height = Resources.getSystem().displayMetrics.heightPixels
 

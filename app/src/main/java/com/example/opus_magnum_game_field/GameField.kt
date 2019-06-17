@@ -8,9 +8,11 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.example.opus_magnum_game_field.Objects.Element
 import kotlinx.android.synthetic.main.activity_main.*
 
 fun buildLevel1(resources:Resources): ArrayList<String> {
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var chosenElement: Element? = null //TODO Нужно, чтобы эта переменная принимала значения элемента, соответствующего нажатой кнопке
         val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
         gameField.setImageBitmap(bitmap)
         drop.setOnClickListener{
@@ -54,6 +57,12 @@ class MainActivity : AppCompatActivity() {
         item_list.setOnItemClickListener{parent, view, position, id ->
             var textView: TextView = view as TextView
             choosen_item.text = textView.text.toString()
+        }
+        val engine = Engine(this)
+        gameField.setOnClickListener {l: View ->
+            if (chosenElement != null) {
+
+            }
         }
     }
 

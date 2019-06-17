@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Manipulators>
-    <Manipulator name="1">
-        <name>чета</name>
+    <Manipulator name="чета">
         <cost>1</cost>
-        <pic>@drawable/mani_temp</pic>
     </Manipulator>
 </Manipulators>

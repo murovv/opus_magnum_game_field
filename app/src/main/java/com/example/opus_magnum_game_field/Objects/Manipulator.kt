@@ -58,7 +58,7 @@ class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCe
     private fun animateRotateLeft(canvas: Canvas) {
         canvas.translate(
             ((canvas.width * 29 / 3) * mainCellCoordinates[0] + (canvas.width * 29 / 6)).toFloat(),
-            ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat() + (canvas.height * 23 / 6)
+            ((canvas.height * 23 / 3) * mainCellCoordinates[1] + (canvas.height * 23 / 6)).toFloat()
         )
         for (i: Int in 1..60) {
             canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
@@ -75,7 +75,7 @@ class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCe
     private fun animateRotateRight(canvas: Canvas) {
         canvas.translate(
             ((canvas.width * 29 / 3) * mainCellCoordinates[0] + (canvas.width * 29 / 6)).toFloat(),
-            ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat() + (canvas.height * 23 / 6)
+            ((canvas.height * 23 / 3) * mainCellCoordinates[1] + (canvas.height * 23 / 6)).toFloat()
         )
         for (i: Int in 1..60) {
             canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)

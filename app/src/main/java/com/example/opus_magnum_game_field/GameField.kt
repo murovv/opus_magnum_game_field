@@ -59,12 +59,20 @@ class MainActivity : AppCompatActivity() {
             choosen_item.text = textView.text.toString()
         }
         val engine = Engine(this)
-        gameField.setOnClickListener {l: View ->
+        /*gameField.setOnClickListener {l: View ->
             if (chosenElement != null) {
-
+                engine.addElementToGameField(chosenElement,l.x/gameField.)
             }
-        }
+        }*/
+        Log.i("Test", "" + gameField.width)
     }
 
+    override fun onResume() {
+        super.onResume()
+        gameField.post {
+            Log.d("Test", "width" + gameField.width)
+            Log.d("Test", "height" + gameField.height)
+        }
+    }
     var check = 100
 }

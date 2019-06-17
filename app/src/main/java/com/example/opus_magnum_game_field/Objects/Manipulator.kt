@@ -3,7 +3,7 @@ package com.example.opus_magnum_game_field.Objects
 import android.graphics.Bitmap
 import android.graphics.Canvas
 
-class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
+open class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
     Element(cost, img, name, mainCellCoordinates, rot, numberOfCells = 2) {
     var takenElement:Element? = null
     var coordinateOfEar = coordinates!![1]

@@ -8,12 +8,17 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+
 import android.view.View
 import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.opus_magnum_game_field.Objects.Element
+
 import kotlinx.android.synthetic.main.activity_main.*
+import android.view.ViewGroup
+import android.widget.*
+
 
 fun buildLevel1(resources:Resources): ArrayList<String> {
     var xrp:XmlResourceParser = resources.getXml(R.xml.lvl1)
@@ -35,6 +40,23 @@ fun buildLevel1(resources:Resources): ArrayList<String> {
     }
     return reactives
 }
+fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
+    var params:LinearLayout.LayoutParams
+    if (listView.adapter.count>2){
+        var item = listView.adapter.getView(0, null, listView)
+        item.measure(0, 0)
+      params = LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, (2.5 * item.measuredHeight).toInt())
+    }else{
+        var item = listView.adapter.getView(0, null, listView)
+        item.measure(0, 0)
+        params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0)
+
+    }
+
+    return params
+
+}
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +75,48 @@ class MainActivity : AppCompatActivity() {
         var arr = buildLevel1(resources)
 
         val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arr)
-        item_list.adapter = adapter
-        item_list.setOnItemClickListener{parent, view, position, id ->
+        val voidAdapter =ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, Array(1,{i->i.toString()}))
+        reagents.setOnClickListener {
+            reagentsList.adapter = adapter
+            manipulatorList.adapter = voidAdapter
+            operatorList.adapter = voidAdapter
+            productList.adapter = voidAdapter
+            reagentsList.setLayoutParams(listSizeCheck(reagentsList))
+            operatorList.setLayoutParams(listSizeCheck(operatorList))
+            manipulatorList.setLayoutParams(listSizeCheck(manipulatorList))
+            productList.setLayoutParams(listSizeCheck(productList))
+        }
+        operators.setOnClickListener {
+            reagentsList.adapter = voidAdapter
+            manipulatorList.adapter = voidAdapter
+            operatorList.adapter = adapter
+            productList.adapter = voidAdapter
+            reagentsList.setLayoutParams(listSizeCheck(reagentsList))
+            operatorList.setLayoutParams(listSizeCheck(operatorList))
+            manipulatorList.setLayoutParams(listSizeCheck(manipulatorList))
+            productList.setLayoutParams(listSizeCheck(productList))
+        }
+        manipulators.setOnClickListener {
+            reagentsList.adapter = voidAdapter
+            manipulatorList.adapter = adapter
+            operatorList.adapter = voidAdapter
+            productList.adapter = voidAdapter
+            reagentsList.setLayoutParams(listSizeCheck(reagentsList))
+            operatorList.setLayoutParams(listSizeCheck(operatorList))
+            manipulatorList.setLayoutParams(listSizeCheck(manipulatorList))
+            productList.setLayoutParams(listSizeCheck(productList))
+        }
+        product.setOnClickListener {
+            reagentsList.adapter = voidAdapter
+            manipulatorList.adapter = voidAdapter
+            operatorList.adapter = voidAdapter
+            productList.adapter = adapter
+            reagentsList.setLayoutParams(listSizeCheck(reagentsList))
+            operatorList.setLayoutParams(listSizeCheck(operatorList))
+            manipulatorList.setLayoutParams(listSizeCheck(manipulatorList))
+            productList.setLayoutParams(listSizeCheck(productList))
+        }
+        operatorList.setOnItemClickListener{parent, view, position, id ->
             var textView: TextView = view as TextView
             choosen_item.text = textView.text.toString()
         }
@@ -64,7 +126,15 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+
     }
 
+    override fun onResume() {
+        super.onResume()
+        gameField.post {
+            Log.d("Test", "width" + gameField.width)
+            Log.d("Test", "height" + gameField.height)
+        }
+    }
     var check = 100
 }

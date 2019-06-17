@@ -12,9 +12,6 @@
             tools:ignore="GoogleAppIndexingWarning"
             android:hardwareAccelerated="false"
             android:largeHeap="true">
-
-        
-        
         <activity android:name=".MainActivity"
                   android:screenOrientation="landscape"
 

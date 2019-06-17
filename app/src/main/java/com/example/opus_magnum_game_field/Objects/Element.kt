@@ -1,20 +1,22 @@
 package com.example.opus_magnum_game_field.Objects
 
+import android.content.Context
 import android.graphics.Bitmap
 
 
 open class Element(
+    internal open val context: Context,
     internal open val cost: Int,
-    internal open val img: Bitmap,
     internal open val name: String,
     internal open var mainCellCoordinates: Array<Int>,
     internal open var rot: Int = 30,
-    internal open var numberOfCells: Int){
+    internal open var numberOfCells: Int,
+    internal open var img: Bitmap? = null){
     internal open var coordinates: Array<Array<Int>>? = countCoordinates()
     open fun getCost(): Int {
         return cost
     }
-    open fun getImg(): Bitmap {
+    open fun getImg(): Bitmap? {
         return img
     }
     open fun getName(): String {

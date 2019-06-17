@@ -8,6 +8,11 @@ class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCe
 
     var takenElement: Element? = null
 
+
+open class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
+    Element(cost, img, name, mainCellCoordinates, rot, numberOfCells = 2) {
+    var takenElement:Element? = null
+
     var coordinateOfEar = coordinates!![1]
 
     val startRotation = rot

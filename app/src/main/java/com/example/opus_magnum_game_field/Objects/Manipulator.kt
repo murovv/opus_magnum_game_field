@@ -6,7 +6,7 @@ import android.graphics.*
 class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
     Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img) {
 
-    var takenElement: Element? = null
+    var takenElement:Element? = null
 
     var coordinateOfEar = coordinates!![1]
 

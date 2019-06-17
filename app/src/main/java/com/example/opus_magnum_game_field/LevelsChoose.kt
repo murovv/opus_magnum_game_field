@@ -1,12 +1,10 @@
 package com.example.opus_magnum_game_field
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_levels_choose.*
 import kotlinx.android.synthetic.main.activity_levels_choose.background_layout
 
@@ -24,7 +22,14 @@ class LevelsChoose : AppCompatActivity() {
         button_exit.setOnClickListener { finish() }
         button_exit.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.buttons))
         button_settings.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.buttons))
-        bt_lvl1.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.bottles0))
+
+        button_exit.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.buttons))
+        button_settings.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.buttons))
+
+        button_exit.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.buttons))
+        button_settings.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.buttons))
+
+        bt_lvl1.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.button1))
         bt_lvl2.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.bottles1))
         bt_lvl3.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.bottles2))
         bt_lvl4.background = BitmapDrawable(resources, BitmapFactory.decodeResource(resources, R.drawable.bottles3))

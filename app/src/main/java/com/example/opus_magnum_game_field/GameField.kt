@@ -118,11 +118,8 @@ class MainActivity : AppCompatActivity() {
         }
         operatorList.setOnItemClickListener{parent, view, position, id ->
             var textView: TextView = view as TextView
-
             choosen_item.text = textView.text.toString()
-
         }
-
         val engine = Engine(this)
         gameField.setOnClickListener {l: View ->
             if (chosenElement != null) {
@@ -132,5 +129,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        gameField.post {
+            Log.d("Test", "width" + gameField.width)
+            Log.d("Test", "height" + gameField.height)
+        }
+    }
     var check = 100
 }

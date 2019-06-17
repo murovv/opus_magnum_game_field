@@ -1,9 +1,10 @@
 package com.example.opus_magnum_game_field.Objects
 
+import android.content.Context
 import android.graphics.*
 
-class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
-    Element(cost, img, name, mainCellCoordinates, rot, numberOfCells = 2) {
+class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
+    Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img) {
 
     var takenElement: Element? = null
 
@@ -64,7 +65,7 @@ class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Arr
             canvas.rotate(-(((rot + i) * Math.PI / 180).toFloat()))
             val paint = Paint()
             canvas.drawBitmap(
-                img, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
+                img!!, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
                 ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
@@ -81,7 +82,7 @@ class Manipulator(cost: Int, img: Bitmap, name: String, mainCellCoordinates: Arr
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
             val paint = Paint()
             canvas.drawBitmap(
-                img, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
+                img!!, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
                 ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())

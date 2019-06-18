@@ -11,4 +11,7 @@ class Engine (context: Context){
     fun getGameField():Array<Array<Element?>>{
         return gameField
     }
+    fun detectTouc(width: Int, height: Int, x: Int, y: Int) {
+
+    }
 }

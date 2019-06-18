@@ -2,7 +2,9 @@ package com.example.opus_magnum_game_field
 
 import android.content.res.Resources
 import android.content.res.XmlResourceParser
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -13,6 +15,7 @@ import com.example.opus_magnum_game_field.Objects.Element
 
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
+import androidx.core.graphics.applyCanvas
 import com.example.opus_magnum_game_field.Objects.Reagents
 
 
@@ -151,8 +154,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        var bitmap: Bitmap? = null
         gameField.post {
             gameField.setOnClickListener {l: View ->
+                bitmap = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
                 if (chosenElement != null) {
                     chosenElement!!.mainCellCoordinates = Array(2) {
                         engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0]
@@ -163,8 +168,13 @@ class MainActivity : AppCompatActivity() {
                         engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0],
                         engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1])
                 }
+                bitmap!!.applyCanvas {
+                    graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())
+                }
             }
         }
+
     }
+    //Пасхальное ицо, не трохай
     var check = 100
 }

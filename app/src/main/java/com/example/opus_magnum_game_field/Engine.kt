@@ -59,7 +59,8 @@ class Engine(context: Context) {
         }
 
 
-        return Array(2) { newX;newY }
+        return Array(2) { newX; newY }
+
 
     }
 }

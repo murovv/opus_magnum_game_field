@@ -6,9 +6,9 @@ import com.example.opus_magnum_game_field.R
 
 class Manipulator(
     context: Context, cost: Int,
-    img: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulatorBase),
+    img: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_base),
     name: String, mainCellCoordinates: Array<Int>, rot: Int,
-    imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulatorRing)) :
+    imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_ring)) :
     Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
 
     var takenElement:Element? = null

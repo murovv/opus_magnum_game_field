@@ -1,6 +1,5 @@
 package com.example.opus_magnum_game_field
 
-import android.content.res.Resources
 import android.content.res.XmlResourceParser
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
@@ -184,8 +183,18 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         gameField.post {
-            Log.d("Test", "width" + gameField.width)
-            Log.d("Test", "height" + gameField.height)
+            gameField.setOnClickListener {l: View ->
+                if (chosenElement != null) {
+                    chosenElement!!.mainCellCoordinates = Array(2) {
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0]
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1]
+                    }
+                    engine!!.addElementToGameField(
+                        chosenElement,
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0],
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1])
+                }
+            }
         }
     }
     var check = 100

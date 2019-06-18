@@ -9,7 +9,9 @@ open class Operators(
     name: String,
     mainCellCoordinates: Array<Int>,
     rot: Int,
-    numberOfCells: Int
-) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells){
+    numberOfCells: Int,
+    img: Bitmap? = null
+) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells, img = img) {
+
 
 }

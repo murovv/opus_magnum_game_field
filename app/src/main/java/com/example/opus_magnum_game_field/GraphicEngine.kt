@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.util.Log
 import com.example.opus_magnum_game_field.Objects.Element
 import com.example.opus_magnum_game_field.Objects.Reagents
 
@@ -24,9 +25,16 @@ class GraphicEngine {
         for(objects in element){
             for(elements in objects) {
                 if (elements != null) {
+                    var absoluteX: Float = elements.mainCellCoordinates[0] * 1.5F * widthOfCell
+                    var absoluteY: Float = if (elements.mainCellCoordinates[0] % 2 == 0) {
+                        elements.mainCellCoordinates[1] * heightOfCell * 1.0F
+                    } else {
+                        elements.mainCellCoordinates[1] * heightOfCell * 1.0F + 0.5F * heightOfCell
+                    }
+                    Log.i("Coordinates of picture", "x = $absoluteX y = $absoluteY")
                     canvas.drawBitmap(
                         Bitmap.createScaledBitmap(elements.img!!, widthOfCell, heightOfCell, true),
-                        (elements.mainCellCoordinates[0].toFloat()), elements.mainCellCoordinates[1].toFloat(), Paint()
+                        absoluteX, absoluteY, Paint()
                     )
                     if (elements.numberOfCells == 2) {
                         canvas.drawBitmap(

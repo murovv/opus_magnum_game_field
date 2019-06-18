@@ -94,8 +94,6 @@ class MainActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
-        gameField.setImageBitmap(bitmap)
         drop.setOnClickListener{
             val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
             gameField.setImageBitmap(bitmap)
@@ -192,25 +190,29 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         var bitmap: Bitmap? = null
         gameField.post {
-            gameField.setOnClickListener {l: View ->
+            val backgroundBitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.test),
+                gameField.width, gameField.height, true)
+            gameField.setImageBitmap(backgroundBitmap)
+            gameField.setOnTouchListener { view, motionEvent ->
                 bitmap = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
+                Log.i("Touch", "x = ${motionEvent.x.toInt()}, y = ${motionEvent.y.toInt()}")
                 if (chosenElement != null) {
                     chosenElement!!.chooseBitmap()
                     chosenElement!!.mainCellCoordinates = Array(2) {
-                        engine.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0]
-                        engine.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1]
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]
                     }
                     engine.addElementToGameField(
                         chosenElement,
-                        engine.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0],
-                        engine.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1])
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0],
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1])
                 }
                 bitmap!!.applyCanvas {
                     graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())
                 }
                 gameField.setImageBitmap(bitmap!!)
                 chosenElement = null
-
+                true
             }
         }
 

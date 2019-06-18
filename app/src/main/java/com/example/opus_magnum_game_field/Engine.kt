@@ -48,7 +48,7 @@ class Engine(context: Context) {
                 hexagon[1] = coordinatesGameField[i][i]
 
                 if (Math.pow((x - countCenterOfHexagon(width, height, hexagon)[0]).toDouble(), 2.0) +
-                    Math.pow((x - countCenterOfHexagon(width, height, hexagon)[1]).toDouble(), 2.0) <=
+                    Math.pow((y - countCenterOfHexagon(width, height, hexagon)[1]).toDouble(), 2.0) <=
                     Math.pow(((3 * width / 58) * Math.sqrt(3.0) / 2), 2.0)
                 ) {
                     newX = hexagon[0]

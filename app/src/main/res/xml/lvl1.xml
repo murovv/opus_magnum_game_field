@@ -6,25 +6,83 @@
                 cost="1"
                 numOfCells="1">
         </Reagent>
-        <Reagent>
+        <Reagent amount="2"
+                name="ссоль))"
+                cost="1000000"
+                numOfCells="2">
             oof
         </Reagent>
-        <Reagent>oof</Reagent>
-        <Reagent>
-            oof
+        <Reagent
+                amount="1"
+                name="ГРЯЗЬ ЧИСТОЙ ВОДЫ"
+                cost="0"
+                numOfCells="2">
         </Reagent>
-        <Reagent>
-            oof
+        <Reagent amount="1"
+                 name="ереванский шпек"
+                 cost="99999999"
+                 numOfCells="1">
         </Reagent>
-        <Reagent>
-            oof
-        </Reagent>
-
     </Reagents>
     <Products>
         <Product
-                 amount="1">Вода
+                amount="2"
+                name="Водка"
+                cost="150"
+                numOfCells="1">
+        </Product>
+        <Product
+                amount="1"
+                name="Таблетки"
+                cost="0"
+                numOfCells="2">
+        </Product>
+        <Product
+                amount="1"
+                name="Сифилис"
+                cost="0"
+                numOfCells="2">
         </Product>
     </Products>
+    <Operators>
+        <Operator
+                amount="1"
+                name="помогите"
+                cost="0"
+                numOfCells="2">
+        </Operator>
+        <Operator
+                amount="1"
+                name="спасите"
+                cost="0"
+                numOfCells="2">
+        </Operator>
+        <Operator
+                amount="1"
+                name="я устал сожалеть устал сомневаться просто провирка на длинный текст"
+                cost="0"
+                numOfCells="2">
+        </Operator>
+    </Operators>
+    <Manipulators>
+        <Manipulator
+                amount="4"
+                name="первый"
+                cost="0"
+                numOfCells="1">
+        </Manipulator>
+        <Manipulator
+                amount="1"
+                name="второй"
+                cost="123"
+                numOfCells="2">
+        </Manipulator>
+        <Manipulator
+                amount="2"
+                name="третий"
+                cost="4"
+                numOfCells="1">
+        </Manipulator>
+    </Manipulators>
 </Level>
 

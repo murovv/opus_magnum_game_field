@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Level lvl="1">
     <Reagents>
-        <Reagent
-                 amount="1">Земля
+        <Reagent amount="1"
+                name="Земля"
+                cost="1"
+                numOfCells="1">
         </Reagent>
         <Reagent>
             oof
         </Reagent>
-        <Reagent>
-            oof
-        </Reagent>
+        <Reagent>oof</Reagent>
         <Reagent>
             oof
         </Reagent>

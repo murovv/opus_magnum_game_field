@@ -1,23 +1,19 @@
 package com.example.opus_magnum_game_field
 
-import android.content.Intent
 import android.content.res.Resources
 import android.content.res.XmlResourceParser
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 
 import android.view.View
-import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.opus_magnum_game_field.Objects.Element
 
 import kotlinx.android.synthetic.main.activity_main.*
-import android.view.ViewGroup
 import android.widget.*
+import com.example.opus_magnum_game_field.Objects.Reagents
 
 
 fun buildLevel1(resources:Resources): ArrayList<String> {
@@ -35,7 +31,6 @@ fun buildLevel1(resources:Resources): ArrayList<String> {
                 products.add(xrp.text.toString())
             }
         }
-
         xrp.next()
     }
     return reactives
@@ -54,11 +49,34 @@ fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
     }
 
     return params
-
 }
 
 
 class MainActivity : AppCompatActivity() {
+    fun getReactive(name:String,resources: Resources){
+        var xrp = resources.getXml(R.xml.lvl1)
+        var cost:Int=0
+        var numOfCells:Int = 0
+        while(xrp.eventType!=XmlResourceParser.END_DOCUMENT){
+            if(xrp.name=="Reagent" && xrp.getAttributeValue(null,"name")==name){
+                val amount:Int = xrp.getAttributeValue(null,"amount").toInt()
+                cost = xrp.getAttributeValue(null,"cost").toInt()
+                numOfCells= xrp.getAttributeValue(null,"numOfCells").toInt()
+                break
+            }
+            xrp.next()
+        }
+        var reagent: Reagents = Reagents(this,cost,name, Array(2) {0},30,numOfCells)
+    }
+    fun getManipulator(name:String,resources: Resources){
+
+    }
+    fun getProduct(){
+
+    }
+    fun getOperator(){
+
+    }
     var engine: Engine? = null
     var graphicEngine:GraphicEngine = GraphicEngine()
     var chosenElement: Element? = null //TODO Нужно, чтобы эта переменная принимала значения элемента, соответствующего нажатой кнопке
@@ -119,6 +137,10 @@ class MainActivity : AppCompatActivity() {
             productList.setLayoutParams(listSizeCheck(productList))
         }
         operatorList.setOnItemClickListener{parent, view, position, id ->
+            var textView: TextView = view as TextView
+            choosen_item.text = textView.text.toString()
+        }
+        manipulatorList.setOnItemClickListener{parent, view, position, id->
             var textView: TextView = view as TextView
             choosen_item.text = textView.text.toString()
         }

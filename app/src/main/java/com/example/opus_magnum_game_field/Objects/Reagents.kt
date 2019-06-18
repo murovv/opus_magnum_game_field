@@ -95,9 +95,9 @@ open class Reagents(
         saltState = true
     }
 
-    fun chooseBitmap(): Bitmap? {
+    override fun chooseBitmap(): Bitmap? {
         when {
-            name == "Earth" -> return BitmapFactory.decodeResource(context.resources, R.drawable.button1)
+            name == "Earth" -> img = BitmapFactory.decodeResource(context.resources, R.drawable.earth)
         }
         return null
     }

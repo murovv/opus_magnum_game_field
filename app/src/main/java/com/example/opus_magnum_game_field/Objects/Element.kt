@@ -2,6 +2,8 @@ package com.example.opus_magnum_game_field.Objects
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import com.example.opus_magnum_game_field.R
 
 
 open class Element(
@@ -66,4 +68,10 @@ open class Element(
         return resultCoordinates
     }
     fun getimgSecondCell():Bitmap?{return imgSecondCell}
+    open fun chooseBitmap(): Bitmap?{
+        when {
+            name == "Earth" -> img = BitmapFactory.decodeResource(context.resources, R.drawable.earth)
+        }
+        return null
+    }
 }

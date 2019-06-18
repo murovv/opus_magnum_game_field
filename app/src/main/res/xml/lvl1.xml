@@ -2,7 +2,7 @@
 <Level lvl="1">
     <Reagents>
         <Reagent amount="1"
-                name="Земля"
+                name="Earth"
                 cost="1"
                 numOfCells="1">
         </Reagent>
@@ -10,7 +10,6 @@
                 name="ссоль))"
                 cost="1000000"
                 numOfCells="2">
-            oof
         </Reagent>
         <Reagent
                 amount="1"

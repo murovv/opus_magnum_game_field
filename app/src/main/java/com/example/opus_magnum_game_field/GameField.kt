@@ -4,6 +4,7 @@ import android.content.res.XmlResourceParser
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.example.opus_magnum_game_field.Objects.Element
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
 import androidx.core.graphics.applyCanvas
+import androidx.core.graphics.drawable.toDrawable
 import com.example.opus_magnum_game_field.Objects.Reagents
 
 
@@ -123,7 +125,7 @@ class MainActivity : AppCompatActivity() {
             }
             xrp.next()
         }
-        val prodAdapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,productNames)
+        val prodAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, productNames)
         val opAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,operatorNames)
         val manAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,manipulatorNames)
         val reagAdapter =ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,reagentNames)
@@ -193,6 +195,7 @@ class MainActivity : AppCompatActivity() {
             gameField.setOnClickListener {l: View ->
                 bitmap = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
                 if (chosenElement != null) {
+                    chosenElement!!.chooseBitmap()
                     chosenElement!!.mainCellCoordinates = Array(2) {
                         engine.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0]
                         engine.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1]
@@ -205,6 +208,9 @@ class MainActivity : AppCompatActivity() {
                 bitmap!!.applyCanvas {
                     graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())
                 }
+                gameField.setImageBitmap(bitmap!!)
+                chosenElement = null
+
             }
         }
 

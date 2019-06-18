@@ -41,9 +41,9 @@ class Engine(context: Context) {
 
 
 
-        for (i: Int in 0..coordinatesGameField!![0].size) {
-            for (j: Int in 0..coordinatesGameField!!.size) {
-                val hexagon: Array<Int> = Array(2) { 0; 0 }
+        for (i: Int in  0 until coordinatesGameField.size) {
+            for (j: Int in 0 until coordinatesGameField[0].size) {
+                val hexagon: Array<Int> = Array(2) {0}
                 hexagon[0] = coordinatesGameField[i][j]
                 hexagon[1] = coordinatesGameField[i][i]
 

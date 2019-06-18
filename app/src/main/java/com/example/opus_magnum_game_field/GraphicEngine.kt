@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
 import com.example.opus_magnum_game_field.Objects.Element
+import com.example.opus_magnum_game_field.Objects.Reagents
 
 class GraphicEngine {
     fun drawGameField(context : Context, canvas: Canvas, element:Array<Array<Element?>>){

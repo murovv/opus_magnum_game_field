@@ -11,7 +11,8 @@ open class Element(
     internal open var mainCellCoordinates: Array<Int>,
     internal open var rot: Int = 30,
     internal open var numberOfCells: Int,
-    internal open var img: Bitmap? = null){
+    internal open var img: Bitmap? = null,
+    protected open var imgSecondCell: Bitmap? = null){
     internal open var coordinates: Array<Array<Int>>? = countCoordinates()
     open fun getCost(): Int {
         return cost
@@ -37,7 +38,7 @@ open class Element(
     open fun setMainCellCoordinates(mainCellCoordinates: Array<Int>) {
         this.mainCellCoordinates = mainCellCoordinates
     }
-    open fun countCoordinates():Array<Array<Int>>{
+    fun countCoordinates():Array<Array<Int>>{
         coordinates = if(numberOfCells==1){
             Array(1){mainCellCoordinates}
         } else {
@@ -53,11 +54,15 @@ open class Element(
             else -> resultCoordinates[0] = coordinates[0] - 1
         }
         when {
-            Math.sin(rot * Math.PI / 180) == 1.0 -> resultCoordinates[1] = coordinates[1] + 2
-            Math.sin(rot * Math.PI / 180) == -1.0 -> resultCoordinates[1] = coordinates[1] - 2
-            Math.sin(rot * Math.PI / 180) > 0 -> resultCoordinates[1] = coordinates[1] + 1
-            else -> resultCoordinates[1] = coordinates[1] - 1
+            Math.sin(rot * Math.PI / 180) == 1.0 -> resultCoordinates[1] = coordinates[1] + 1
+            Math.sin(rot * Math.PI / 180) == -1.0 -> resultCoordinates[1] = coordinates[1] - 1
+            (Math.sin(rot * Math.PI / 180) > 0) && (mainCellCoordinates[0] % 2 == 1) -> resultCoordinates[1] =
+                coordinates[1] + 1
+            (Math.sin(rot * Math.PI / 180) < 0) && (mainCellCoordinates[0] % 2 == 0) -> resultCoordinates[1] =
+                coordinates[1] - 1
+            else -> resultCoordinates[1] = coordinates[1]
         }
         return resultCoordinates
     }
+    fun getimgSecondCell():Bitmap?{return imgSecondCell}
 }

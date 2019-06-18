@@ -154,11 +154,14 @@ class MainActivity : AppCompatActivity() {
         gameField.post {
             gameField.setOnClickListener {l: View ->
                 if (chosenElement != null) {
-                    chosenElement!!.mainCellCoordinates=Array(2){((l.x / (gameField.width / 9)).toInt());((l.y / (gameField.height / 7)).toInt())}
+                    chosenElement!!.mainCellCoordinates = Array(2) {
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0]
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1]
+                    }
                     engine!!.addElementToGameField(
                         chosenElement,
-                        ((l.x / (gameField.width / 9)).toInt()),
-                        ((l.y / (gameField.height / 7)).toInt()))
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[0],
+                        engine!!.detectTouch(gameField.width, gameField.height, (l.x.toInt()), l.y.toInt())[1])
                 }
             }
         }

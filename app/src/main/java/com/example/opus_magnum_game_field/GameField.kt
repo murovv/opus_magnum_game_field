@@ -77,6 +77,8 @@ class MainActivity : AppCompatActivity() {
 
     var chosenElement: Element? = null //TODO Нужно, чтобы эта переменная принимала значения элемента, соответствующего нажатой кнопке
 
+    val engine = Engine(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         fun updateLists(){
             reagentsList.setLayoutParams(listSizeCheck(reagentsList))
@@ -171,7 +173,7 @@ class MainActivity : AppCompatActivity() {
             chosenElement = getElement(textView.text.toString(),ElementTypes.Reagent)
             choosen_item.text = textView.text.toString()
         }
-        val engine = Engine(this)
+
         gameField.setOnClickListener {l: View ->
             if (chosenElement != null) {
 

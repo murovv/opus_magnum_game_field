@@ -59,10 +59,12 @@ fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
 
 
 class MainActivity : AppCompatActivity() {
+    var engine: Engine? = null
+    var graphicEngine:GraphicEngine = GraphicEngine()
+    var chosenElement: Element? = null //TODO Нужно, чтобы эта переменная принимала значения элемента, соответствующего нажатой кнопке
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var chosenElement: Element? = null //TODO Нужно, чтобы эта переменная принимала значения элемента, соответствующего нажатой кнопке
         val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
         gameField.setImageBitmap(bitmap)
         drop.setOnClickListener{
@@ -120,20 +122,23 @@ class MainActivity : AppCompatActivity() {
             var textView: TextView = view as TextView
             choosen_item.text = textView.text.toString()
         }
-        val engine = Engine(this)
-        gameField.setOnClickListener {l: View ->
-            if (chosenElement != null) {
+        engine = Engine(this)
 
-            }
-        }
 
     }
 
     override fun onResume() {
         super.onResume()
         gameField.post {
-            Log.d("Test", "width" + gameField.width)
-            Log.d("Test", "height" + gameField.height)
+            gameField.setOnClickListener {l: View ->
+                if (chosenElement != null) {
+                    chosenElement!!.mainCellCoordinates=Array(2){((l.x / (gameField.width / 9)).toInt());((l.y / (gameField.height / 7)).toInt())}
+                    engine!!.addElementToGameField(
+                        chosenElement,
+                        ((l.x / (gameField.width / 9)).toInt()),
+                        ((l.y / (gameField.height / 7)).toInt()))
+                }
+            }
         }
     }
     var check = 100

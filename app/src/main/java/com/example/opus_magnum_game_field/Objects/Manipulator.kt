@@ -3,7 +3,7 @@ package com.example.opus_magnum_game_field.Objects
 import android.content.Context
 import android.graphics.*
 
-class Manipulator(context: Context, cost: Int, img: Bitmap, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
+class Manipulator(context: Context, cost: Int, img: Bitmap? = null, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
     Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img) {
 
     var takenElement:Element? = null

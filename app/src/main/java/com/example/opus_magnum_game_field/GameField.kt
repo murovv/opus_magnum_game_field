@@ -198,14 +198,14 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Touch", "x = ${motionEvent.x.toInt()}, y = ${motionEvent.y.toInt()}")
                 if (chosenElement != null) {
                     chosenElement!!.chooseBitmap()
-                    chosenElement!!.mainCellCoordinates = Array(2) {
-                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]
+                    chosenElement!!.mainCellCoordinates = arrayOf(
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0],
                         engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]
-                    }
+                    )
                     engine.addElementToGameField(
                         chosenElement,
-                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0],
-                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1])
+                        chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1]
+                    )
                 }
                 bitmap!!.applyCanvas {
                     graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())

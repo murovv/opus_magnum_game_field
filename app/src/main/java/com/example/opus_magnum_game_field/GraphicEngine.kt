@@ -12,7 +12,7 @@ import com.example.opus_magnum_game_field.Objects.Reagents
 class GraphicEngine {
     fun drawGameField(context : Context, canvas: Canvas, element:Array<Array<Element?>>){
         val widthOfCell = canvas.width * 3 / 29
-        //val sizeOfSide = widthOfCell / 2
+        val sizeOfSide = widthOfCell / 2
         val heightOfCell = canvas.height * 3 / 23
         canvas.drawBitmap(
             Bitmap.createScaledBitmap(
@@ -25,7 +25,7 @@ class GraphicEngine {
         for(objects in element){
             for(elements in objects) {
                 if (elements != null) {
-                    var absoluteX: Float = elements.mainCellCoordinates[0] * 1.5F * widthOfCell
+                    var absoluteX: Float = ((elements.mainCellCoordinates[0] / 2) * widthOfCell + (elements.mainCellCoordinates[0] / 2 + elements.mainCellCoordinates[0] % 2)* sizeOfSide).toFloat()
                     var absoluteY: Float = if (elements.mainCellCoordinates[0] % 2 == 0) {
                         elements.mainCellCoordinates[1] * heightOfCell * 1.0F
                     } else {

@@ -43,9 +43,9 @@ open class Element(
     }
     fun countCoordinates():Array<Array<Int>>{
         coordinates = if(numberOfCells==1){
-            Array(1){mainCellCoordinates}
+            arrayOf(mainCellCoordinates)
         } else {
-            Array(2){mainCellCoordinates; updateCoordinate(mainCellCoordinates, rot)}
+            arrayOf(mainCellCoordinates, updateCoordinate(mainCellCoordinates, rot))
         }
         return coordinates!!
     }

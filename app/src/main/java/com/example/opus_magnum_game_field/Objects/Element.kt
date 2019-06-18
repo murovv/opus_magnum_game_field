@@ -13,6 +13,7 @@ open class Element(
     internal open var numberOfCells: Int,
     internal open var img: Bitmap? = null){
     internal open var coordinates: Array<Array<Int>>? = countCoordinates()
+
     open fun getCost(): Int {
         return cost
     }

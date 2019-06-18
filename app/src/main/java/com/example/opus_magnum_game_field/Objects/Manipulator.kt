@@ -2,9 +2,14 @@ package com.example.opus_magnum_game_field.Objects
 
 import android.content.Context
 import android.graphics.*
+import com.example.opus_magnum_game_field.R
 
-class Manipulator(context: Context, cost: Int, img: Bitmap? = null, name: String, mainCellCoordinates: Array<Int>, rot: Int) :
-    Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img) {
+class Manipulator(
+    context: Context, cost: Int,
+    img: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulatorBase),
+    name: String, mainCellCoordinates: Array<Int>, rot: Int,
+    imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulatorRing)) :
+    Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
 
     var takenElement:Element? = null
 

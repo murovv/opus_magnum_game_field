@@ -9,7 +9,8 @@ open class Product(
     name: String,
     mainCellCoordinates: Array<Int>,
     rot: Int,
-    numberOfCells: Int
-) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells){
-    var amount:Int? = null
+    numberOfCells: Int,
+    img: Bitmap? = null
+) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells, img = img) {
+    var amount: Int? = null
 }

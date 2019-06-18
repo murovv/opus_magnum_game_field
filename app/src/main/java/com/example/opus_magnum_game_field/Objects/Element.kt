@@ -14,6 +14,7 @@ open class Element(
     internal open var img: Bitmap? = null,
     protected open var imgSecondCell: Bitmap? = null){
     internal open var coordinates: Array<Array<Int>>? = countCoordinates()
+
     open fun getCost(): Int {
         return cost
     }

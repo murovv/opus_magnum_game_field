@@ -20,7 +20,7 @@ class Manipulator(
     val startRotation = rot
 
     fun rotateLeft(canvas: Canvas) {
-        animateRotateLeft(canvas)
+        //animateRotateLeft(canvas)
         rot += 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -38,7 +38,7 @@ class Manipulator(
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        animateRotateRight(canvas)
+        //animateRotateRight(canvas)
     }
 
     fun grab() {

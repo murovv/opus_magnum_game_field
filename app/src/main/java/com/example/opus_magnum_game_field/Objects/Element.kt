@@ -39,6 +39,7 @@ open class Element(
     }
     open fun setRot(rot:Int){
         this.rot = rot
+        chooseBitmap()
     }
     open fun setMainCellCoordinates(mainCellCoordinates: Array<Int>) {
         this.mainCellCoordinates = mainCellCoordinates
@@ -54,13 +55,13 @@ open class Element(
     private fun updateCoordinate(coordinates:Array<Int>, rot: Int):Array<Int>{
         val resultCoordinates = Array(2){0}
         when {
+            ((Math.cos(rot * Math.PI / 180) < 0.01)&&(Math.cos(rot * Math.PI / 180) > -0.01)) -> resultCoordinates[0] = mainCellCoordinates[0]
             Math.cos(rot * Math.PI / 180) > 0 -> resultCoordinates[0] = coordinates[0] + 1
-            Math.cos(rot * Math.PI / 180) == 0.0 -> resultCoordinates[0] = coordinates[0]
             else -> resultCoordinates[0] = coordinates[0] - 1
         }
         when {
-            Math.sin(rot * Math.PI / 180) == 1.0 -> resultCoordinates[1] = coordinates[1] + 1
-            Math.sin(rot * Math.PI / 180) == -1.0 -> resultCoordinates[1] = coordinates[1] - 1
+            Math.sin(rot * Math.PI / 180) == 1.0 -> resultCoordinates[1] = coordinates[1] - 1
+            Math.sin(rot * Math.PI / 180) == -1.0 -> resultCoordinates[1] = coordinates[1] + 1
             (Math.sin(rot * Math.PI / 180) > 0) && (mainCellCoordinates[0] % 2 == 0) -> resultCoordinates[1] =
                 coordinates[1] - 1
             (Math.sin(rot * Math.PI / 180) < 0) && (mainCellCoordinates[0] % 2 == 1) -> resultCoordinates[1] =

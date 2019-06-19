@@ -16,6 +16,10 @@ import com.example.opus_magnum_game_field.Objects.Element
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
 import androidx.core.graphics.applyCanvas
+import androidx.core.graphics.drawable.toDrawable
+import com.example.opus_magnum_game_field.Objects.OperatorName
+import com.example.opus_magnum_game_field.Objects.Reagents
+
 
 
 fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
@@ -173,7 +177,33 @@ class MainActivity : AppCompatActivity() {
             chosenElement = getElement(textView.text.toString(),ElementTypes.Reagent)
             choosen_item.text = textView.text.toString()
         }
-
+        var actions =ArrayList<OperatorName>()
+        var actionsStringNames = ArrayList<String>()
+        //TODO накинуть листнеры на кнопочки
+        grab.setOnClickListener {
+            actions.add(OperatorName.GRAB)
+            actionsStringNames.add("grab")
+        }
+        drop.setOnClickListener {
+            actions.add(OperatorName.DROP)
+            actionsStringNames.add("drop")
+        }
+        rleft.setOnClickListener {
+            actions.add(OperatorName.ROTATE_LEFT)
+            actionsStringNames.add("rleft")
+        }
+        rright.setOnClickListener {
+            actions.add(OperatorName.ROTATE_RIGHT)
+            actionsStringNames.add("rright")
+        }
+        wait.setOnClickListener {
+            actions.add(OperatorName.WAIT)
+            actionsStringNames.add("wait")
+        }
+        returnButton.setOnClickListener {
+            actions.add(OperatorName.RETURN_TO_START)
+            actionsStringNames.add("returnToStart")
+        }
         gameField.setOnClickListener {l: View ->
             if (chosenElement != null) {
 

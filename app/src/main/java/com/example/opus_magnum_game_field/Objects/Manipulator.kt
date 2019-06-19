@@ -52,7 +52,7 @@ class Manipulator(
         engine.addElementToGameField(buffer,coordinateOfEar[0],coordinateOfEar[1])
     }
 
-    fun returnToStart(canvas: Canvas) {
+    fun returnToStart(canvas: Canvas,waitCalls:Int) {
         rot = startRotation
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -60,7 +60,7 @@ class Manipulator(
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        returnToStart(canvas)
+        Thread.sleep((1000*waitCalls).toLong())
     }
 
     private fun animateRotateLeft(canvas: Canvas) {
@@ -101,6 +101,7 @@ class Manipulator(
         //TODO Реализовать анимацию возвращения к изначальной позиции без коллизий
     }
     fun performAlgo(actions:ArrayList<OperatorName>,canvas: Canvas) {
+        var waitCalls = 0
         for(action in actions){
             if(action==OperatorName.ROTATE_LEFT){
                 rotateLeft(canvas)
@@ -115,9 +116,12 @@ class Manipulator(
                 grab()
             }
             if(action==OperatorName.RETURN_TO_START){
-                returnToStart(canvas)
-            }else{
+                returnToStart(canvas,waitCalls)
+                waitCalls=0
+            }
+            if (action==OperatorName.WAIT){
                 Thread.sleep(1000)
+                waitCalls++
             }
         }
     }

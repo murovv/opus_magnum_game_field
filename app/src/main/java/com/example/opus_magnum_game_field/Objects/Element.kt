@@ -84,6 +84,14 @@ open class Element(
                     //this.rotate(rot.toFloat())
                 }
             }
+            name == "Earth Product"->{
+                val bufferImg = BitmapFactory.decodeResource(context.resources, R.drawable.water)
+                img = Bitmap.createBitmap(bufferImg.width,bufferImg.height,Bitmap.Config.ARGB_8888)
+                img!!.applyCanvas {
+                    this.save()
+                    this.drawBitmap(bufferImg, 0.0F, 0.0F, Paint())
+                }
+            }
             name == "Manipulator" -> {
                 val bufferImg = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_base)
                 img = Bitmap.createBitmap(bufferImg.width,bufferImg.height,Bitmap.Config.ARGB_8888)

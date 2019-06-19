@@ -3,12 +3,18 @@ package com.example.opus_magnum_game_field
 import android.content.Context
 import com.example.opus_magnum_game_field.Objects.Element
 
-class Engine(context: Context) {
+class Engine(val context: Context) {
 
     private var gameField = Array(12) { Array<Element?>(7) { null } }
 
     fun addElementToGameField(element: Element?, x: Int, y: Int) {
         gameField[x][y] = element
+    }
+
+    fun addElementToGameField(element: Element?, x: Int, y: Int, byHand:Boolean){
+        if (gameField[x][y] == null) {
+            gameField[x][y] = element
+        }
     }
 
     fun getGameField(): Array<Array<Element?>> {
@@ -61,5 +67,9 @@ class Engine(context: Context) {
 
         return arrayOf(newX, newY)
 
+    }
+    var isWin = false
+    fun win(){
+        isWin = true
     }
 }

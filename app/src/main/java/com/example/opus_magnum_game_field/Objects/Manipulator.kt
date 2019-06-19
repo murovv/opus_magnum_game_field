@@ -49,7 +49,9 @@ class Manipulator(
     fun drop() {
         val buffer = takenElement
         takenElement = null
-        engine.addElementToGameField(buffer,coordinateOfEar[0],coordinateOfEar[1])
+        if(buffer!=null) {
+            engine.addElementToGameField(buffer, coordinateOfEar[0], coordinateOfEar[1])
+        }
     }
 
     fun returnToStart(canvas: Canvas,waitCalls:Int) {

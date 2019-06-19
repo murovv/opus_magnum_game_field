@@ -181,15 +181,16 @@ class MainActivity : AppCompatActivity() {
             chosenElement = getElement(textView.text.toString(), ElementTypes.Reagent)
             choosen_item.text = textView.text.toString()
         }
-        var actions =ArrayList<OperatorName>()
+
+        var actions = ArrayList<OperatorName>()
         var actionsStringNames = ArrayList<String>()
+        var adapter = ArrayAdapter<OperatorName>(this, android.R.layout.simple_expandable_list_item_1, actions)
         //TODO накинуть листнеры на кнопочки
-        gameField.setOnClickListener {l: View ->
+        gameField.setOnClickListener { l: View ->
             if (chosenElement != null) {
 
             }
         }
-
     }
 
     private var touchedElement: Element? = null
@@ -227,11 +228,32 @@ class MainActivity : AppCompatActivity() {
                         chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1]
                     )
                 } else if (engine.getGameField()
-                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
-                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]] != null) {
+                            [engine.detectTouch(
+                        gameField.width,
+                        gameField.height,
+                        (motionEvent.x.toInt()),
+                        motionEvent.y.toInt()
+                    )[0]]
+                            [engine.detectTouch(
+                        gameField.width,
+                        gameField.height,
+                        (motionEvent.x.toInt()),
+                        motionEvent.y.toInt()
+                    )[1]] != null
+                ) {
                     touchedElement = (engine.getGameField()
-                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
-                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]])
+                            [engine.detectTouch(
+                        gameField.width,
+                        gameField.height,
+                        (motionEvent.x.toInt()),
+                        motionEvent.y.toInt()
+                    )[0]]
+                            [engine.detectTouch(
+                        gameField.width,
+                        gameField.height,
+                        (motionEvent.x.toInt()),
+                        motionEvent.y.toInt()
+                    )[1]])
                 }
                 bitmap!!.applyCanvas {
                     graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())

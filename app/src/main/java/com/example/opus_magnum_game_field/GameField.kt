@@ -3,8 +3,6 @@ package com.example.opus_magnum_game_field
 import android.content.res.XmlResourceParser
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,9 +16,6 @@ import com.example.opus_magnum_game_field.Objects.Element
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
 import androidx.core.graphics.applyCanvas
-import androidx.core.graphics.drawable.toDrawable
-import com.example.opus_magnum_game_field.Objects.Reagents
-
 
 
 fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
@@ -187,6 +182,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private var touchedElement: Element? = null
+
     override fun onResume() {
         super.onResume()
         var bitmap: Bitmap? = null
@@ -207,6 +204,12 @@ class MainActivity : AppCompatActivity() {
                         chosenElement,
                         chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1]
                     )
+                } else if (engine.getGameField()
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]] != null) {
+                    touchedElement = (engine.getGameField()
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]])
                 }
                 bitmap!!.applyCanvas {
                     graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())

@@ -37,8 +37,8 @@ class Engine(context: Context) {
     fun detectTouch(width: Int, height: Int, x: Int, y: Int): Array<Int> {
         val widthOfCell = width * 3 / 29
         val heightOfCell = height * 3 / 23
-        var newX: Int = 0    //координата шестиугольника
-        var newY: Int = 0    //координата шестиугольника
+        var newX = 0    //координата шестиугольника
+        var newY = 0    //координата шестиугольника
         var flag = false
         for (i: Int in  0 until gameField.size) {
             for (j: Int in 0 until gameField[0].size) {

@@ -82,16 +82,16 @@ class Manipulator(
 
     private fun animateRotateRight(canvas: Canvas) {
         canvas.translate(
-            ((canvas.width * 29 / 3) * mainCellCoordinates[0] + (canvas.width * 29 / 6)).toFloat(),
-            ((canvas.height * 23 / 3) * mainCellCoordinates[1] + (canvas.height * 23 / 6)).toFloat()
+            ((canvas.width * 3 / 29) * mainCellCoordinates[0] + (canvas.width * 3 / 58)).toFloat(),
+            ((canvas.height * 3 / 23) * mainCellCoordinates[1] + (canvas.height * 3 / 46)).toFloat()
         )
         for (i: Int in 1..60) {
             canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
             val paint = Paint()
             canvas.drawBitmap(
-                img!!, ((canvas.width * 29 / 3) * mainCellCoordinates[0]).toFloat(),
-                ((canvas.height * 23 / 3) * mainCellCoordinates[1]).toFloat(), paint
+                img!!, ((canvas.width * 3 / 29) * mainCellCoordinates[0]).toFloat(),
+                ((canvas.height * 3 / 23) * mainCellCoordinates[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
         }

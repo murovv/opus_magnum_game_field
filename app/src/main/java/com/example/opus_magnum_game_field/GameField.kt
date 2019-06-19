@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     var chosenElement: Element? = null
     var graphicEngine:GraphicEngine = GraphicEngine()
-    val engine = Engine(this)
+    var engine = Engine(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         fun updateLists(){
@@ -210,19 +210,18 @@ class MainActivity : AppCompatActivity() {
         start.setOnClickListener {
             for(manArr in engine.getGameField()){
                 for(man in manArr){
-                    if(man!!.name=="Manipulator"){
-                        val man=Manipulator(this,man.cost,null,engine,man.name,man.mainCellCoordinates,man.rot,man.getimgSecondCell())
-                        man.performAlgo(actions, Canvas())//ОПАСНО
+                    if((man!=null)&&man.name=="Manipulator"){
+                        val manip = Manipulator(this, man.cost,null, engine, man.name,
+                            man.mainCellCoordinates, man.rot, man.getimgSecondCell())
+                        manip.performAlgo(actions, Canvas())//ОПАСНО
+                        manip.coordinates=manip.countCoordinates()
+                        manip.chooseBitmap()
+                        Log.i("Manipulator state",""+man.rot)
+                        engine.addElementToGameField(manip,man.getMainCellCoordinates()[0],man.getMainCellCoordinates()[1])
                     }
                 }
             }
         }
-        gameField.setOnClickListener {l: View ->
-            if (chosenElement != null) {
-
-            }
-        }
-
     }
 
     private var touchedElement: Element? = null

@@ -69,6 +69,7 @@ class GraphicEngine {
             for(elements in objects) {
                 if ((elements != null) && (elements.name == "Manipulator")
                 ) {
+                    Log.i("Manipulator in GE", ""+elements.rot)
                     var absoluteX: Float = if (elements.mainCellCoordinates[0] % 2 == 0) {
                         ((elements.mainCellCoordinates[0] / 2) * widthOfCell + (elements.mainCellCoordinates[0] / 2 + elements.mainCellCoordinates[0] % 2) * sizeOfSide).toFloat()
                     } else {

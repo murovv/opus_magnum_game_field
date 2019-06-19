@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     var chosenElement: Element? = null
     var graphicEngine:GraphicEngine = GraphicEngine()
     var engine = Engine(this)
-
+    var actions =ArrayList<OperatorName>()
     override fun onCreate(savedInstanceState: Bundle?) {
         fun updateLists(){
             reagentsList.setLayoutParams(listSizeCheck(reagentsList))
@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity() {
             chosenElement = getElement(textView.text.toString(),ElementTypes.Reagent)
             choosen_item.text = textView.text.toString()
         }
-        var actions =ArrayList<OperatorName>()
+
         var actionsStringNames = ArrayList<String>()
         //TODO накинуть листнеры на кнопочки
         grab.setOnClickListener {
@@ -206,21 +206,6 @@ class MainActivity : AppCompatActivity() {
         returnButton.setOnClickListener {
             actions.add(OperatorName.RETURN_TO_START)
             actionsStringNames.add("returnToStart")
-        }
-        start.setOnClickListener {
-            for(manArr in engine.getGameField()){
-                for(man in manArr){
-                    if((man!=null)&&man.name=="Manipulator"){
-                        val manip = Manipulator(this, man.cost,null, engine, man.name,
-                            man.mainCellCoordinates, man.rot, man.getimgSecondCell())
-                        manip.performAlgo(actions, Canvas())//ОПАСНО
-                        manip.coordinates=manip.countCoordinates()
-                        manip.chooseBitmap()
-                        Log.i("Manipulator state",""+man.rot)
-                        engine.addElementToGameField(manip,man.getMainCellCoordinates()[0],man.getMainCellCoordinates()[1])
-                    }
-                }
-            }
         }
     }
 
@@ -260,6 +245,29 @@ class MainActivity : AppCompatActivity() {
                 gameField.setImageBitmap(bitmap!!)
                 chosenElement = null
                 true
+            }
+            fun updateGameField(){
+                bitmap = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
+                bitmap!!.applyCanvas {
+                    graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())
+                }
+                gameField.setImageBitmap(bitmap!!)
+            }
+            start.setOnClickListener {
+                for(manArr in engine.getGameField()){
+                    for(man in manArr){
+                        if((man!=null)&&man.name=="Manipulator"){
+                            val manip = Manipulator(this, man.cost,null, engine, man.name,
+                                man.mainCellCoordinates, man.rot, man.getimgSecondCell())
+                            manip.performAlgo(actions, Canvas())//ОПАСНО
+                            manip.coordinates=manip.countCoordinates()
+                            manip.chooseBitmap()
+                            Log.i("Manipulator state",""+man.rot)
+                            engine.addElementToGameField(manip,man.getMainCellCoordinates()[0],man.getMainCellCoordinates()[1])
+                            updateGameField()
+                        }
+                    }
+                }
             }
         }
 

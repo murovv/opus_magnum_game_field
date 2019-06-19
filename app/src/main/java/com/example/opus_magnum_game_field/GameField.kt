@@ -207,6 +207,14 @@ class MainActivity : AppCompatActivity() {
             actions.add(OperatorName.RETURN_TO_START)
             actionsStringNames.add("returnToStart")
         }
+        delete.setOnClickListener {
+            actions.removeAt(actions.size - 1)
+            actionsStringNames.removeAt(actions.size-1)
+        }
+        deleteall.setOnClickListener {
+            actions.clear()
+            actionsStringNames.clear()
+        }
     }
 
     private var touchedElement: Element? = null

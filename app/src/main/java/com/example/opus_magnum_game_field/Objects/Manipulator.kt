@@ -2,11 +2,13 @@ package com.example.opus_magnum_game_field.Objects
 
 import android.content.Context
 import android.graphics.*
+import com.example.opus_magnum_game_field.Engine
 import com.example.opus_magnum_game_field.R
 
 class Manipulator(
     context: Context, cost: Int,
     img: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_base),
+    var engine: Engine,
     name: String, mainCellCoordinates: Array<Int>, rot: Int,
     imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_ring)) :
     Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
@@ -96,5 +98,24 @@ class Manipulator(
 
     private fun animationReturn(canvas: Canvas) {
         //TODO Реализовать анимацию возвращения к изначальной позиции без коллизий
+    }
+    fun performAlgo(actions:ArrayList<OperatorName>,canvas: Canvas) {
+        for(action in actions){
+            if(action==OperatorName.ROTATE_LEFT){
+                rotateLeft(canvas)
+            }
+            if(action==OperatorName.ROTATE_RIGHT){
+                rotateRight(canvas)
+            }
+            if(action==OperatorName.DROP){
+                drop()
+            }
+            if(action==OperatorName.GRAB){
+                grab(engine.getElement(coordinateOfEar[0],coordinateOfEar[1]))
+            }
+        }
+    }
+    fun updateEngine(newEngine:Engine){
+        engine=newEngine
     }
 }

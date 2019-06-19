@@ -2,6 +2,10 @@ package com.example.opus_magnum_game_field.Objects
 
 import android.content.Context
 import android.graphics.Bitmap
+enum class OperatorName{
+    //TODO назвать все существующие операторы
+    ROTATE_LEFT,ROTATE_RIGHT,GRAB,DROP,RETURN_TO_START,WAIT
+}
 
 open class Operators(
     context: Context,

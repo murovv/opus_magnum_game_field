@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
+
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -23,18 +24,18 @@ import com.example.opus_magnum_game_field.Objects.Reagents
 
 
 fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
-    var params:LinearLayout.LayoutParams
+    val params:LinearLayout.LayoutParams
     if(listView.adapter.count==1&&listView.adapter.getItem(0).toString().toInt()==0){
-        var item = listView.adapter.getView(0, null, listView)
+        val item = listView.adapter.getView(0, null, listView)
         item.measure(0, 0)
         params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0)
     }
     else if (listView.adapter.count>2){
-        var item = listView.adapter.getView(0, null, listView)
+        val item = listView.adapter.getView(0, null, listView)
         item.measure(0, 0)
       params = LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, (2.5 * item.measuredHeight).toInt())
     }else{
-        var item = listView.adapter.getView(0, null, listView)
+        val item = listView.adapter.getView(0, null, listView)
         item.measure(0, 0)
         params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT,android.widget.LinearLayout.LayoutParams.WRAP_CONTENT )
 
@@ -47,8 +48,8 @@ enum class ElementTypes{
 }
 
 class MainActivity : AppCompatActivity() {
-    fun getElement(name:String,type:ElementTypes): Element? {
-        var xrp = resources.getXml(R.xml.lvl1)
+    private fun getElement(name:String, type:ElementTypes): Element? {
+        val xrp = resources.getXml(R.xml.lvl1)
         var cost:Int=0
         var numOfCells:Int = 0
         while(xrp.eventType!=XmlResourceParser.END_DOCUMENT){
@@ -157,23 +158,23 @@ class MainActivity : AppCompatActivity() {
             updateLists()
         }
         operatorList.setOnItemClickListener{parent, view, position, id ->
-            var textView: TextView = view as TextView
+            val textView: TextView = view as TextView
 
             chosenElement = getElement(textView.text.toString(),ElementTypes.Operator)
             choosen_item.text = textView.text.toString()
         }
         manipulatorList.setOnItemClickListener{parent, view, position, id->
-            var textView: TextView = view as TextView
+            val textView: TextView = view as TextView
             chosenElement = getElement(textView.text.toString(),ElementTypes.Manipulator)
             choosen_item.text = textView.text.toString()
         }
         productList.setOnItemClickListener{parent, view, position, id->
-            var textView: TextView = view as TextView
+            val textView: TextView = view as TextView
             chosenElement = getElement(textView.text.toString(),ElementTypes.Product)
             choosen_item.text = textView.text.toString()
         }
         reagentsList.setOnItemClickListener{parent, view, position, id->
-            var textView: TextView = view as TextView
+            val textView: TextView = view as TextView
             chosenElement = getElement(textView.text.toString(),ElementTypes.Reagent)
             choosen_item.text = textView.text.toString()
         }

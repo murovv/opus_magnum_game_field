@@ -236,10 +236,12 @@ class MainActivity : AppCompatActivity() {
                         engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]
                     )
                     chosenElement!!.countCoordinates()
+                    chosenElement!!.setAmountMinusOne()
                     engine.addElementToGameField(
                         chosenElement,
                         chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1], true
                     )
+
                 } else if (engine.getGameField()
                             [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
                             [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]] != null) {

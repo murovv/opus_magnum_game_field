@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import com.example.opus_magnum_game_field.Engine
 import com.example.opus_magnum_game_field.R
+import java.time.temporal.TemporalAmount
 
 class Manipulator(
     context: Context, cost: Int,
@@ -11,7 +12,7 @@ class Manipulator(
     var engine: Engine,
     name: String, mainCellCoordinates: Array<Int>, rot: Int,
     imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_ring)) :
-    Element(context, cost, name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
+    Element(context, cost,name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
 
     var takenElement:Element? = null
 

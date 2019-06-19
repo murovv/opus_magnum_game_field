@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Paint
 import androidx.core.graphics.applyCanvas
 import com.example.opus_magnum_game_field.R
+import java.time.temporal.TemporalAmount
 
 
 open class Element(
@@ -18,6 +19,12 @@ open class Element(
     internal open var img: Bitmap? = null,
     protected open var imgSecondCell: Bitmap? = null){
     internal open var coordinates: Array<Array<Int>>? = countCoordinates()
+
+    internal open var amount: Int = 0
+
+    open fun getAmount():Int{
+        return amount
+    }
 
     open fun getCost(): Int {
         return cost
@@ -40,6 +47,9 @@ open class Element(
     open fun setRot(rot:Int){
         this.rot = rot
         chooseBitmap()
+    }
+    open fun setAmountMinusOne(){
+        this.amount=this.amount-1
     }
     open fun setMainCellCoordinates(mainCellCoordinates: Array<Int>) {
         this.mainCellCoordinates = mainCellCoordinates

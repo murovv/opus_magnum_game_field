@@ -103,23 +103,23 @@ class Manipulator(
     fun performAlgo(actions:ArrayList<OperatorName>,canvas: Canvas) {
         var waitCalls = 0
         for(action in actions){
-            if(action==OperatorName.ROTATE_LEFT){
+            if (action == OperatorName.ROTATE_LEFT) {
                 rotateLeft(canvas)
             }
-            if(action==OperatorName.ROTATE_RIGHT){
+            if (action == OperatorName.ROTATE_RIGHT) {
                 rotateRight(canvas)
             }
-            if(action==OperatorName.DROP){
+            if (action == OperatorName.DROP) {
                 drop()
             }
-            if(action==OperatorName.GRAB){
+            if (action == OperatorName.GRAB) {
                 grab()
             }
-            if(action==OperatorName.RETURN_TO_START){
-                returnToStart(canvas,waitCalls)
-                waitCalls=0
+            if (action == OperatorName.RETURN_TO_START) {
+                returnToStart(canvas, waitCalls)
+                waitCalls = 0
             }
-            if (action==OperatorName.WAIT){
+            if (action == OperatorName.WAIT) {
                 Thread.sleep(1000)
                 waitCalls++
             }

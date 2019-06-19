@@ -180,6 +180,30 @@ class MainActivity : AppCompatActivity() {
         var actions =ArrayList<OperatorName>()
         var actionsStringNames = ArrayList<String>()
         //TODO накинуть листнеры на кнопочки
+        grab.setOnClickListener {
+            actions.add(OperatorName.GRAB)
+            actionsStringNames.add("grab")
+        }
+        drop.setOnClickListener {
+            actions.add(OperatorName.DROP)
+            actionsStringNames.add("drop")
+        }
+        rleft.setOnClickListener {
+            actions.add(OperatorName.ROTATE_LEFT)
+            actionsStringNames.add("rleft")
+        }
+        rright.setOnClickListener {
+            actions.add(OperatorName.ROTATE_RIGHT)
+            actionsStringNames.add("rright")
+        }
+        wait.setOnClickListener {
+            actions.add(OperatorName.WAIT)
+            actionsStringNames.add("wait")
+        }
+        returnButton.setOnClickListener {
+            actions.add(OperatorName.RETURN_TO_START)
+            actionsStringNames.add("returnToStart")
+        }
         gameField.setOnClickListener {l: View ->
             if (chosenElement != null) {
 

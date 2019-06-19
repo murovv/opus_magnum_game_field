@@ -6,17 +6,6 @@
                 cost="1"
                 numOfCells="1">
         </Reagent>
-        <Reagent amount="2"
-                name="ссоль))"
-                cost="1000000"
-                numOfCells="2">
-        </Reagent>
-        <Reagent
-                amount="1"
-                name="ГРЯЗЬ ЧИСТОЙ ВОДЫ"
-                cost="0"
-                numOfCells="2">
-        </Reagent>
         <Reagent amount="1"
                  name="ереванский шпек"
                  cost="99999999"
@@ -26,19 +15,19 @@
     <Products>
         <Product
                 amount="2"
-                name="Водка"
+                name="Тиф"
                 cost="150"
                 numOfCells="1">
         </Product>
         <Product
                 amount="1"
-                name="Таблетки"
+                name="Сифилис"
                 cost="0"
                 numOfCells="2">
         </Product>
         <Product
                 amount="1"
-                name="Сифилис"
+                name="Проказа"
                 cost="0"
                 numOfCells="2">
         </Product>
@@ -66,9 +55,9 @@
     <Manipulators>
         <Manipulator
                 amount="4"
-                name="первый"
+                name="Manipulator"
                 cost="0"
-                numOfCells="1">
+                numOfCells="2">
         </Manipulator>
         <Manipulator
                 amount="1"

@@ -43,9 +43,22 @@ class GraphicEngine {
                         absoluteX, absoluteY, Paint()
                     )
                     if (elements.numberOfCells == 2) {
+                        var absoluteX: Float = if(elements.coordinates!![1][0] % 2 == 0){
+                            ((elements.coordinates!![1][0] / 2) * widthOfCell + (elements.coordinates!![1][0] / 2 + elements.coordinates!![1][0] % 2)* sizeOfSide).toFloat()
+                        } else{
+                            ((elements.coordinates!![1][0] / 2) * widthOfCell + (elements.coordinates!![1][0] / 2 + elements.coordinates!![1][0] % 2) * sizeOfSide + widthOfCell / 4).toFloat()
+
+                        }
+
+                        var absoluteY: Float = if (elements.coordinates!![1][0] % 2 == 0) {
+                            elements.coordinates!![1][1] * heightOfCell * 1.0F
+                        } else {
+                            elements.coordinates!![1][1] * heightOfCell * 1.0F + 0.5F * heightOfCell
+                        }
+                        Log.i("Coordinates of picture", "x = $absoluteX y = $absoluteY")
                         canvas.drawBitmap(
                             Bitmap.createScaledBitmap(elements.getimgSecondCell()!!, widthOfCell, heightOfCell, true),
-                            (elements.coordinates!![1][0].toFloat()), elements.coordinates!![1][1].toFloat(), Paint()
+                            absoluteX, absoluteY, Paint()
                         )
                     }
                 }

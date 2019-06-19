@@ -3,6 +3,8 @@ package com.example.opus_magnum_game_field.Objects
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Paint
+import androidx.core.graphics.applyCanvas
 import com.example.opus_magnum_game_field.R
 
 
@@ -59,10 +61,10 @@ open class Element(
         when {
             Math.sin(rot * Math.PI / 180) == 1.0 -> resultCoordinates[1] = coordinates[1] + 1
             Math.sin(rot * Math.PI / 180) == -1.0 -> resultCoordinates[1] = coordinates[1] - 1
-            (Math.sin(rot * Math.PI / 180) > 0) && (mainCellCoordinates[0] % 2 == 1) -> resultCoordinates[1] =
-                coordinates[1] + 1
-            (Math.sin(rot * Math.PI / 180) < 0) && (mainCellCoordinates[0] % 2 == 0) -> resultCoordinates[1] =
+            (Math.sin(rot * Math.PI / 180) > 0) && (mainCellCoordinates[0] % 2 == 0) -> resultCoordinates[1] =
                 coordinates[1] - 1
+            (Math.sin(rot * Math.PI / 180) < 0) && (mainCellCoordinates[0] % 2 == 1) -> resultCoordinates[1] =
+                coordinates[1] + 1
             else -> resultCoordinates[1] = coordinates[1]
         }
         return resultCoordinates
@@ -70,7 +72,42 @@ open class Element(
     fun getimgSecondCell():Bitmap?{return imgSecondCell}
     open fun chooseBitmap(): Bitmap?{
         when {
-            name == "Earth" -> img = BitmapFactory.decodeResource(context.resources, R.drawable.earth)
+            name == "Earth" -> {
+                val bufferImg = BitmapFactory.decodeResource(context.resources, R.drawable.earth)
+                img = Bitmap.createBitmap(bufferImg.width,bufferImg.height,Bitmap.Config.ARGB_8888)
+                img!!.applyCanvas {
+                    this.save()
+                    //this.translate(this.width / 2.0F, this.height / 2.0F)
+                    //this.rotate((-rot).toFloat())
+                    this.drawBitmap(bufferImg,0.0F,0.0F, Paint())
+                    //this.rotate(rot.toFloat())
+                }
+            }
+            name == "Manipulator" -> {
+                val bufferImg = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_base)
+                img = Bitmap.createBitmap(bufferImg.width,bufferImg.height,Bitmap.Config.ARGB_8888)
+                img!!.applyCanvas {
+                    this.translate(this.width / 2.0F, this.height / 2.0F)
+                    this.rotate((-rot).toFloat())
+                    this.translate(-this.width / 2.0F, -this.height / 2.0F)
+                    this.drawBitmap(bufferImg,0.0F,0.0F, Paint())
+                    this.translate(this.width / 2.0F, this.height / 2.0F)
+                    this.rotate(rot.toFloat())
+                    this.translate(-this.width / 2.0F, -this.height / 2.0F)
+                }
+                val imgSecondCellBuffer = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_ring)
+                imgSecondCell = Bitmap.createBitmap(bufferImg.width,bufferImg.height,Bitmap.Config.ARGB_8888)
+                imgSecondCell!!.applyCanvas {
+                    this.save()
+                    this.translate(this.width / 2.0F, this.height / 2.0F)
+                    this.rotate((-rot).toFloat())
+                    this.translate(-this.width / 2.0F, -this.height / 2.0F)
+                    this.drawBitmap(imgSecondCellBuffer,0.0F,0.0F, Paint())
+                    this.translate(this.width / 2.0F, this.height / 2.0F)
+                    this.rotate(rot.toFloat())
+                    this.translate(-this.width / 2.0F, -this.height / 2.0F)
+                }
+            }
         }
         return null
     }

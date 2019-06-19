@@ -200,6 +200,7 @@ class MainActivity : AppCompatActivity() {
                         engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0],
                         engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]
                     )
+                    chosenElement!!.countCoordinates()
                     engine.addElementToGameField(
                         chosenElement,
                         chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1]

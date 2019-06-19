@@ -32,12 +32,11 @@ open class Reagents(
         var x: Int = mainCellCoordinates[0]
         var y: Int = mainCellCoordinates[1]
 
-        val newX: Int = (canvas.width * 29 / 3) * newCoordinates[0] + (canvas.width * 29 / 6)
+        val newX: Int = (canvas.width * 3 / 29) * newCoordinates[0] + (canvas.width * 3 / 58)
 
-        val newY: Int = (canvas.height * 23 / 3) * newCoordinates[1] + (canvas.height * 23 / 6)
+        val newY: Int = (canvas.height * 3 / 23) * newCoordinates[1] + (canvas.height * 3 / 46)
 
-        val widthOfBitmap = canvas.width * 29 / 3
-        val heightOfBitmap = canvas.height * 29 / 3
+        val widthOfBitmap = canvas.width * 3 / 29
 
         for (i: Int in 0..(mainCellCoordinates[0] - newX)) {
             canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
@@ -57,8 +56,8 @@ open class Reagents(
 
     fun animateRotationLeft(canvas: Canvas, coordinatesOfCenterOfRotation: Array<Int>) {
         canvas.translate(
-            ((canvas.width * 29 / 3) * coordinatesOfCenterOfRotation[0] + (canvas.width * 29 / 6)).toFloat(),
-            ((canvas.height * 23 / 3) * coordinatesOfCenterOfRotation[1] + (canvas.height * 23 / 6)).toFloat()
+            ((canvas.width * 3 / 29) * coordinatesOfCenterOfRotation[0] + (canvas.width * 3 / 58)).toFloat(),
+            ((canvas.height * 3 / 23) * coordinatesOfCenterOfRotation[1] + (canvas.height * 3 / 46)).toFloat()
         )
 
         for (i: Int in 1..60) {
@@ -66,8 +65,8 @@ open class Reagents(
             canvas.rotate(-(((rot + i) * Math.PI / 180).toFloat()))
             val paint = Paint()
             canvas.drawBitmap(
-                img!!, ((canvas.width * 29 / 3) * coordinatesOfCenterOfRotation[0]).toFloat(),
-                ((canvas.height * 23 / 3) * coordinatesOfCenterOfRotation[1]).toFloat(), paint
+                img!!, ((canvas.width * 3 / 29) * coordinatesOfCenterOfRotation[0]).toFloat(),
+                ((canvas.height * 3 / 23) * coordinatesOfCenterOfRotation[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
         }
@@ -75,8 +74,8 @@ open class Reagents(
 
     fun animateRotationRight(canvas: Canvas, newCoordinates: Array<Int>, coordinatesOfCenterOfRotation: Array<Int>) {
         canvas.translate(
-            ((canvas.width * 29 / 3) * coordinatesOfCenterOfRotation[0] + (canvas.width * 29 / 6)).toFloat(),
-            ((canvas.height * 23 / 3) * coordinatesOfCenterOfRotation[1]).toFloat() + (canvas.height * 23 / 6)
+            ((canvas.width * 3 / 29) * coordinatesOfCenterOfRotation[0] + (canvas.width * 3 / 58)).toFloat(),
+            ((canvas.height * 3 / 23) * coordinatesOfCenterOfRotation[1]).toFloat() + (canvas.height * 3 / 46)
         )
 
         for (i: Int in 1..60) {
@@ -84,8 +83,8 @@ open class Reagents(
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
             val paint = Paint()
             canvas.drawBitmap(
-                img!!, ((canvas.width * 29 / 3) * coordinatesOfCenterOfRotation[0]).toFloat(),
-                ((canvas.height * 23 / 3) * coordinatesOfCenterOfRotation[1]).toFloat(), paint
+                img!!, ((canvas.width * 3 / 29) * coordinatesOfCenterOfRotation[0]).toFloat(),
+                ((canvas.height * 3 / 23) * coordinatesOfCenterOfRotation[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
         }

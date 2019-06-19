@@ -25,7 +25,13 @@ class GraphicEngine {
         for(objects in element){
             for(elements in objects) {
                 if (elements != null) {
-                    var absoluteX: Float = ((elements.mainCellCoordinates[0] / 2) * widthOfCell + (elements.mainCellCoordinates[0] / 2 + elements.mainCellCoordinates[0] % 2)* sizeOfSide).toFloat()
+                    var absoluteX: Float = if(elements.mainCellCoordinates[0] % 2 == 0){
+                        ((elements.mainCellCoordinates[0] / 2) * widthOfCell + (elements.mainCellCoordinates[0] / 2 + elements.mainCellCoordinates[0] % 2)* sizeOfSide).toFloat()
+                    } else{
+                        ((elements.mainCellCoordinates[0] / 2) * widthOfCell + (elements.mainCellCoordinates[0] / 2 + elements.mainCellCoordinates[0] % 2) * sizeOfSide + widthOfCell / 4).toFloat()
+
+                    }
+
                     var absoluteY: Float = if (elements.mainCellCoordinates[0] % 2 == 0) {
                         elements.mainCellCoordinates[1] * heightOfCell * 1.0F
                     } else {

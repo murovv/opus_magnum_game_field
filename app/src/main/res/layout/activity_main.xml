@@ -92,6 +92,9 @@
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Delete\n all" android:id="@+id/deleteall"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="start\n"
+        android:id="@+id/start"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="Settings"
         android:id="@+id/settings"/>
 
@@ -121,9 +124,13 @@
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="delete\n" android:id="@+id/delete"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Delete\n object"
+        android:id="@+id/delete_object"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="EXIT"
                 android:id="@+id/exit"
         />
+
         <TextView android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/choosen_item"/>

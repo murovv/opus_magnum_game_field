@@ -3,6 +3,7 @@ package com.example.opus_magnum_game_field
 import android.content.res.XmlResourceParser
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.drawable.toDrawable
+import com.example.opus_magnum_game_field.Objects.Manipulator
 import com.example.opus_magnum_game_field.Objects.OperatorName
 import com.example.opus_magnum_game_field.Objects.Reagents
 
@@ -62,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 val amount:Int = xrp.getAttributeValue(null,"amount").toInt()
                 cost = xrp.getAttributeValue(null,"cost").toInt()
                 numOfCells= xrp.getAttributeValue(null,"numOfCells").toInt()
+                return Manipulator(this,cost,null,engine,name, arrayOf(0,0),30,null)
                 break
             }
             if(type==ElementTypes.Operator && xrp.getAttributeValue(null,"name")==name){
@@ -203,6 +206,16 @@ class MainActivity : AppCompatActivity() {
         returnButton.setOnClickListener {
             actions.add(OperatorName.RETURN_TO_START)
             actionsStringNames.add("returnToStart")
+        }
+        start.setOnClickListener {
+            for(manArr in engine.getGameField()){
+                for(man in manArr){
+                    if(man!!.name=="Manipulator"){
+                        val man=Manipulator(this,man.cost,null,engine,man.name,man.mainCellCoordinates,man.rot,man.getimgSecondCell())
+                        man.performAlgo(actions, Canvas())//ОПАСНО
+                    }
+                }
+            }
         }
         gameField.setOnClickListener {l: View ->
             if (chosenElement != null) {

@@ -15,7 +15,9 @@ class Engine(context: Context) {
         return gameField
     }
     fun getElement(x:Int,y:Int): Element? {
-        return getGameField()[x][y]
+        val retEl= getGameField()[x][y]
+        gameField[x][y]=null
+        return retEl
     }
     private fun countCenterOfHexagon(widthOFCell: Int, heightOfCell: Int, coordinates: Array<Int>): Array<Int> {
         val centerX = widthOFCell * coordinates[0] + widthOFCell/2

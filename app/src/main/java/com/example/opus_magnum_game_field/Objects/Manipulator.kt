@@ -41,14 +41,15 @@ class Manipulator(
         animateRotateRight(canvas)
     }
 
-    fun grab(element: Element?) {
+    fun grab() {
+        val element = engine.getElement(coordinateOfEar[0],coordinateOfEar[1])
         takenElement = element
     }
 
-    fun drop(): Element? {
+    fun drop() {
         val buffer = takenElement
         takenElement = null
-        return buffer
+        engine.addElementToGameField(buffer,coordinateOfEar[0],coordinateOfEar[1])
     }
 
     fun returnToStart(canvas: Canvas) {
@@ -111,11 +112,14 @@ class Manipulator(
                 drop()
             }
             if(action==OperatorName.GRAB){
-                grab(engine.getElement(coordinateOfEar[0],coordinateOfEar[1]))
+                grab()
+            }
+            if(action==OperatorName.RETURN_TO_START){
+                returnToStart(canvas)
+            }else{
+                Thread.sleep(1000)
             }
         }
     }
-    fun updateEngine(newEngine:Engine){
-        engine=newEngine
-    }
+
 }

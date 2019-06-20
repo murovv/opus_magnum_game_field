@@ -1,5 +1,7 @@
 package com.example.opus_magnum_game_field
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.res.XmlResourceParser
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -188,7 +190,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         var actionsStringNames = ArrayList<String>()
-        //TODO накинуть листнеры на кнопочки
+
         grab.setOnClickListener {
             actions.add(OperatorName.GRAB)
             actionsStringNames.add("grab")
@@ -220,6 +222,15 @@ class MainActivity : AppCompatActivity() {
         deleteall.setOnClickListener {
             actions.clear()
             actionsStringNames.clear()
+        }
+        task.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Task")
+            builder.setMessage("Перенесите Землю в Продукт при помощи манипулятора")
+            builder.setPositiveButton("ok", DialogInterface.OnClickListener{dialog,listener->
+                dialog.dismiss()
+            })
+            builder.create().show()
         }
     }
 

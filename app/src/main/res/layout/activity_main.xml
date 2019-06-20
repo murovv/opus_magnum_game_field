@@ -95,8 +95,8 @@
         android:text="start\n"
         android:id="@+id/start"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Settings"
-        android:id="@+id/settings"/>
+        android:text="Task"
+        android:id="@+id/task"/>
 
     </LinearLayout>
     <LinearLayout android:layout_width="wrap_content"

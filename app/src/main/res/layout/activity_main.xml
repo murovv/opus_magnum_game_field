@@ -329,30 +329,33 @@
 				android:id="@+id/operatorList">
 		</ListView>
 
-	</LinearLayout>
-	<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:orientation="vertical"
-			android:id="@+id/operations2"
-			android:layout_alignParentRight="true">
-		<Button android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="Drop"
-		        android:id="@+id/drop"
-		/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="Rotate \nRight" android:id="@+id/rright"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="Pull in"
-		        android:id="@+id/pull_in"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="Wait" android:id="@+id/wait"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="Delete\n all" android:id="@+id/deleteall"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="Settings"
-		        android:id="@+id/settings"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/operations2"
+            android:layout_alignParentRight="true">
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop"
+                android:id="@+id/drop"
+        />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Rotate \nRight" android:id="@+id/rright"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Pull in"
+                android:id="@+id/pull_in"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Wait" android:id="@+id/wait"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Delete\n all" android:id="@+id/deleteall"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="start\n"
+        android:id="@+id/start"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Task"
+        android:id="@+id/task"/>
 
 	</LinearLayout>
 	<LinearLayout android:layout_width="wrap_content"
@@ -369,23 +372,27 @@
 		        android:layout_height="wrap_content"
 		        android:text="Rotate\n Left"
 
-		        android:id="@+id/rleft"
-		/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="Pull out"
-		        android:id="@+id/pull_out"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="return"
-		        android:id="@+id/returnButton"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="delete\n" android:id="@+id/delete"/>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-		        android:text="EXIT"
-		        android:id="@+id/exit"
-		/>
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:id="@+id/choosen_item"/>
+                android:id="@+id/rleft"
+        />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Pull out"
+                android:id="@+id/pull_out"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="return"
+                android:id="@+id/returnButton"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="delete\n" android:id="@+id/delete"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Delete\n object"
+        android:id="@+id/delete_object"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="EXIT"
+                android:id="@+id/exit"
+        />
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/choosen_item"/>
 
 
 	</LinearLayout>

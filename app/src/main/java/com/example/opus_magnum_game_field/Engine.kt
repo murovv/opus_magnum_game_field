@@ -3,12 +3,18 @@ package com.example.opus_magnum_game_field
 import android.content.Context
 import com.example.opus_magnum_game_field.Objects.Element
 
-class Engine(context: Context) {
+class Engine(val context: Context) {
 
     private var gameField = Array(12) { Array<Element?>(7) { null } }
 
     fun addElementToGameField(element: Element?, x: Int, y: Int) {
         gameField[x][y] = element
+    }
+
+    fun addElementToGameField(element: Element?, x: Int, y: Int, byHand:Boolean){
+        if (gameField[x][y] == null) {
+            gameField[x][y] = element
+        }
     }
 
     fun getGameField(): Array<Array<Element?>> {
@@ -37,8 +43,8 @@ class Engine(context: Context) {
     fun detectTouch(width: Int, height: Int, x: Int, y: Int): Array<Int> {
         val widthOfCell = width * 3 / 29
         val heightOfCell = height * 3 / 23
-        var newX: Int = 0    //координата шестиугольника
-        var newY: Int = 0    //координата шестиугольника
+        var newX = 0    //координата шестиугольника
+        var newY = 0    //координата шестиугольника
         var flag = false
         for (i: Int in  0 until gameField.size) {
             for (j: Int in 0 until gameField[0].size) {
@@ -61,5 +67,9 @@ class Engine(context: Context) {
 
         return arrayOf(newX, newY)
 
+    }
+    var isWin = false
+    fun win(){
+        isWin = true
     }
 }

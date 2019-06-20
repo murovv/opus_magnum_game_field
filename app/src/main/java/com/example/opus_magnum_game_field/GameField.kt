@@ -1,9 +1,11 @@
 package com.example.opus_magnum_game_field
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.res.XmlResourceParser
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
+import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,31 +20,34 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.drawable.toDrawable
+import com.example.opus_magnum_game_field.Objects.Manipulator
 import com.example.opus_magnum_game_field.Objects.OperatorName
 import com.example.opus_magnum_game_field.Objects.Reagents
-import android.widget.LinearLayout
 
 
-fun listSizeCheck(listView: ListView): LinearLayout.LayoutParams {
-    val params: LinearLayout.LayoutParams
-    if (listView.adapter.count == 1 && listView.adapter.getItem(0).toString().toInt() == 0) {
+
+fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
+    val params:LinearLayout.LayoutParams
+    if (listView.adapter.getItem(0).toString().matches(Regex("[0-9]*"))){
+
+        if(listView.adapter.count==1&&listView.adapter.getItem(0).toString().toInt()==0){
+            val item = listView.adapter.getView(0, null, listView)
+            item.measure(0, 0)
+            params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0)
+        }else{
+            params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
+        }
+
+    }
+    else if (listView.adapter.count>2){
         val item = listView.adapter.getView(0, null, listView)
         item.measure(0, 0)
-        params = LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0)
-    } else if (listView.adapter.count > 2) {
+      params = LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, (2.5 * item.measuredHeight).toInt())
+    }else{
         val item = listView.adapter.getView(0, null, listView)
         item.measure(0, 0)
-        params = LinearLayout.LayoutParams(
-            android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
-            (2.5 * item.measuredHeight).toInt()
-        )
-    } else {
-        val item = listView.adapter.getView(0, null, listView)
-        item.measure(0, 0)
-        params = LinearLayout.LayoutParams(
-            android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
-            android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
-        )
+        params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT,android.widget.LinearLayout.LayoutParams.WRAP_CONTENT )
+
     }
 
     return params
@@ -64,10 +69,11 @@ class MainActivity : AppCompatActivity() {
                 numOfCells = xrp.getAttributeValue(null, "numOfCells").toInt()
                 break
             }
-            if (type == ElementTypes.Manipulator && xrp.getAttributeValue(null, "name") == name) {
-                val amount: Int = xrp.getAttributeValue(null, "amount").toInt()
-                cost = xrp.getAttributeValue(null, "cost").toInt()
-                numOfCells = xrp.getAttributeValue(null, "numOfCells").toInt()
+            if(type==ElementTypes.Manipulator && xrp.getAttributeValue(null,"name")==name){
+                val amount:Int = xrp.getAttributeValue(null,"amount").toInt()
+                cost = xrp.getAttributeValue(null,"cost").toInt()
+                numOfCells= xrp.getAttributeValue(null,"numOfCells").toInt()
+                return Manipulator(this,cost,null,engine,name, arrayOf(0,0),30,null)
                 break
             }
             if (type == ElementTypes.Operator && xrp.getAttributeValue(null, "name") == name) {
@@ -88,11 +94,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     var chosenElement: Element? = null
-    var graphicEngine: GraphicEngine = GraphicEngine()
-    val engine = Engine(this)
-
+    var graphicEngine:GraphicEngine = GraphicEngine()
+    var engine = Engine(this)
+    var actions =ArrayList<OperatorName>()
     override fun onCreate(savedInstanceState: Bundle?) {
-        fun updateLists() {
+        fun updateLists(){
             reagentsList.setLayoutParams(listSizeCheck(reagentsList))
             operatorList.setLayoutParams(listSizeCheck(operatorList))
             manipulatorList.setLayoutParams(listSizeCheck(manipulatorList))
@@ -100,11 +106,11 @@ class MainActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        drop.setOnClickListener {
+        drop.setOnClickListener{
             val bitmap = BitmapFactory.decodeResource(resources, R.drawable.test)
             gameField.setImageBitmap(bitmap)
         }
-        exit.setOnClickListener {
+        exit.setOnClickListener{
             finish()
         }
 
@@ -113,27 +119,27 @@ class MainActivity : AppCompatActivity() {
         var productNames = ArrayList<String>()
         var manipulatorNames = ArrayList<String>()
         val xrp = resources.getXml(R.xml.lvl1)
-        while (xrp.eventType != XmlResourceParser.END_DOCUMENT) {
-            var elName = xrp.getAttributeValue(null, "name")
-            if (xrp.name == "Reagent" && elName != null) {
+        while(xrp.eventType!=XmlResourceParser.END_DOCUMENT){
+            var elName = xrp.getAttributeValue(null,"name")
+            if(xrp.name=="Reagent"&&elName!=null){
                 reagentNames.add(elName.toString())
             }
-            if (xrp.name == "Manipulator" && elName != null) {
+            if(xrp.name=="Manipulator"&&elName!=null){
                 manipulatorNames.add(elName.toString())
             }
-            if (xrp.name == "Operator" && elName != null) {
+            if(xrp.name=="Operator"&&elName!=null){
                 operatorNames.add(elName.toString())
             }
-            if (xrp.name == "Product" && elName != null) {
+            if(xrp.name=="Product"&&elName!=null){
                 productNames.add(elName.toString())
             }
             xrp.next()
         }
         val prodAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, productNames)
-        val opAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, operatorNames)
-        val manAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, manipulatorNames)
-        val reagAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, reagentNames)
-        val voidAdapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, arrayOf(0))
+        val opAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,operatorNames)
+        val manAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,manipulatorNames)
+        val reagAdapter =ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,reagentNames)
+        val voidAdapter =ArrayAdapter<Int>(this,android.R.layout.simple_list_item_1, arrayOf(0))
         reagents.setOnClickListener {
             reagentsList.adapter = reagAdapter
             manipulatorList.adapter = voidAdapter
@@ -184,8 +190,10 @@ class MainActivity : AppCompatActivity() {
             choosen_item.text = textView.text.toString()
         }
 
+
         var actions = ArrayList<OperatorName>()
         var actionsStringNames = ArrayList<String>()
+
         var adapter = ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, actionsStringNames)
 
         grab.setOnClickListener {
@@ -221,12 +229,23 @@ class MainActivity : AppCompatActivity() {
             actions.add(OperatorName.RETURN_TO_START)
             actionsStringNames.add("returnToStart")
         }
-        gameField.setOnClickListener { l: View ->
-            if (chosenElement != null) {
-
-            }
+        delete.setOnClickListener {
+            actions.removeAt(actions.size - 1)
+            actionsStringNames.removeAt(actions.size-1)
         }
-
+        deleteall.setOnClickListener {
+            actions.clear()
+            actionsStringNames.clear()
+        }
+        task.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Task")
+            builder.setMessage("Перенесите Землю в Продукт при помощи манипулятора")
+            builder.setPositiveButton("ok", DialogInterface.OnClickListener{dialog,listener->
+                dialog.dismiss()
+            })
+            builder.create().show()
+        }
     }
 
     private var touchedElement: Element? = null
@@ -235,10 +254,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         var bitmap: Bitmap? = null
         gameField.post {
-            val backgroundBitmap = Bitmap.createScaledBitmap(
-                BitmapFactory.decodeResource(resources, R.drawable.test),
-                gameField.width, gameField.height, true
-            )
+            val backgroundBitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.test),
+                gameField.width, gameField.height, true)
             gameField.setImageBitmap(backgroundBitmap)
             gameField.setOnTouchListener { view, motionEvent ->
                 bitmap = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
@@ -246,50 +263,22 @@ class MainActivity : AppCompatActivity() {
                 if (chosenElement != null) {
                     chosenElement!!.chooseBitmap()
                     chosenElement!!.mainCellCoordinates = arrayOf(
-                        engine.detectTouch(
-                            gameField.width,
-                            gameField.height,
-                            (motionEvent.x.toInt()),
-                            motionEvent.y.toInt()
-                        )[0],
-                        engine.detectTouch(
-                            gameField.width,
-                            gameField.height,
-                            (motionEvent.x.toInt()),
-                            motionEvent.y.toInt()
-                        )[1]
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0],
+                        engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]
                     )
+                    chosenElement!!.countCoordinates()
+                    chosenElement!!.setAmountMinusOne()
                     engine.addElementToGameField(
                         chosenElement,
-                        chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1]
+                        chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1], true
                     )
+
                 } else if (engine.getGameField()
-                            [engine.detectTouch(
-                        gameField.width,
-                        gameField.height,
-                        (motionEvent.x.toInt()),
-                        motionEvent.y.toInt()
-                    )[0]]
-                            [engine.detectTouch(
-                        gameField.width,
-                        gameField.height,
-                        (motionEvent.x.toInt()),
-                        motionEvent.y.toInt()
-                    )[1]] != null
-                ) {
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]] != null) {
                     touchedElement = (engine.getGameField()
-                            [engine.detectTouch(
-                        gameField.width,
-                        gameField.height,
-                        (motionEvent.x.toInt()),
-                        motionEvent.y.toInt()
-                    )[0]]
-                            [engine.detectTouch(
-                        gameField.width,
-                        gameField.height,
-                        (motionEvent.x.toInt()),
-                        motionEvent.y.toInt()
-                    )[1]])
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[0]]
+                            [engine.detectTouch(gameField.width, gameField.height, (motionEvent.x.toInt()), motionEvent.y.toInt())[1]])
                 }
                 bitmap!!.applyCanvas {
                     graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())
@@ -298,10 +287,44 @@ class MainActivity : AppCompatActivity() {
                 chosenElement = null
                 true
             }
+            fun updateGameField(){
+                bitmap = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
+                bitmap!!.applyCanvas {
+                    graphicEngine.drawGameField(this@MainActivity, this, engine!!.getGameField())
+                }
+                gameField.setImageBitmap(bitmap!!)
+            }
+            start.setOnClickListener {
+                for(manArr in engine.getGameField()){
+                    for(man in manArr){
+                        if((man!=null)&&man.name=="Manipulator"){
+                            val manip = Manipulator(this, man.cost,null, engine, man.name,
+                                man.mainCellCoordinates, man.rot, man.getimgSecondCell())
+                            manip.performAlgo(actions, Canvas())//ОПАСНО
+                            manip.coordinates  = manip.countCoordinates()
+                            manip.chooseBitmap()
+                            Log.i("Manipulator state",""+man.rot)
+                            engine.addElementToGameField(manip,man.getMainCellCoordinates()[0],man.getMainCellCoordinates()[1])
+                            updateGameField()
+                            if(engine.isWin){
+                                finish()
+                            }
+                        }
+                    }
+                }
+            }
+            delete_object.setOnClickListener{
+                if (touchedElement != null) {
+                    engine.addElementToGameField(
+                        null,
+                        touchedElement!!.getMainCellCoordinates()[0],
+                        touchedElement!!.getMainCellCoordinates()[1])
+                    updateGameField()
+                }
+            }
         }
 
     }
-
     //Пасхальное ицо, не трохай
     var check = 100
 }

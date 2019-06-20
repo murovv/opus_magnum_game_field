@@ -307,7 +307,6 @@ class MainActivity : AppCompatActivity() {
                             if(engine.isWin){
                                 val aboutDialog = AlertDialog.Builder(this).setMessage("You Win")
                                     .setPositiveButton("Return to menu") { _, _ ->
-                                        // TODO Auto-generated method stub
                                         finish()
                                     }.create()
 

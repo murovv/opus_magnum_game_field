@@ -3,6 +3,7 @@ package com.example.opus_magnum_game_field
 import android.content.res.XmlResourceParser
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,7 @@ import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.drawable.toDrawable
 import com.example.opus_magnum_game_field.Objects.OperatorName
 import com.example.opus_magnum_game_field.Objects.Reagents
+import android.widget.LinearLayout
 
 
 fun listSizeCheck(listView: ListView): LinearLayout.LayoutParams {
@@ -184,11 +186,20 @@ class MainActivity : AppCompatActivity() {
 
         var actions = ArrayList<OperatorName>()
         var actionsStringNames = ArrayList<String>()
-        var adapter = ArrayAdapter<OperatorName>(this, android.R.layout.simple_expandable_list_item_1, actions)
-        //TODO накинуть листнеры на кнопочки
+        var adapter = ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, actionsStringNames)
+
         grab.setOnClickListener {
             actions.add(OperatorName.GRAB)
             actionsStringNames.add("grab")
+            if (choosen_item.text.toString() == "первый") {
+                manipulator1.adapter = adapter
+            } else {
+                if (choosen_item.text.toString() == "второй") {
+                    manipulator1.adapter = adapter
+                } else {
+                    manipulator2.adapter = adapter
+                }
+            }
         }
         drop.setOnClickListener {
             actions.add(OperatorName.DROP)
@@ -210,7 +221,7 @@ class MainActivity : AppCompatActivity() {
             actions.add(OperatorName.RETURN_TO_START)
             actionsStringNames.add("returnToStart")
         }
-        gameField.setOnClickListener {l: View ->
+        gameField.setOnClickListener { l: View ->
             if (chosenElement != null) {
 
             }

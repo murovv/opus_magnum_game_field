@@ -1,142 +1,393 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
->
-    <RelativeLayout
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:id="@+id/operators_and_canvas"
-            android:orientation="vertical" android:layout_toEndOf="@+id/item_panel"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		tools:context=".MainActivity">
 
-            android:layout_toStartOf="@+id/operations1">
+	<RelativeLayout
+			android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			android:id="@+id/operators_and_canvas"
+			android:orientation="vertical"
+			android:layout_toEndOf="@+id/item_panel"
+			android:layout_toStartOf="@+id/operations1">
+
+		<!--
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_alignParentBottom="true"
+				android:layout_marginBottom="0dp"
+				android:orientation="vertical">
+			<android.support.v7.widget.RecyclerView
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:id="@+id/list0"
+					android:layout_weight="1">
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/layout0"
+						android:orientation="horizontal">
+				</LinearLayout>
+			</android.support.v7.widget.RecyclerView>
+
+			<HorizontalScrollView
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:id="@+id/list1"
+					android:layout_weight="1">
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/layout1"
+						android:orientation="horizontal">
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:textColor="#ffffff"
+					          android:text="loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooool"/>
+
+				</LinearLayout>
+			</HorizontalScrollView>
+
+			<HorizontalScrollView
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:id="@+id/list2"
+					android:layout_weight="1">
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/layout2"
+						android:orientation="horizontal">
+				</LinearLayout>
+			</HorizontalScrollView>
+			</LinearLayout>-->
+
+		<HorizontalScrollView
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_alignParentBottom="true"
+				android:layout_below="@id/gameField">
+			<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout1">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button0"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator1"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator1">
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout2">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button1"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator2"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator2">
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout3">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button2"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator3"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator3">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout4">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button3"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator4"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator4">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout5">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button4"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator5"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator5">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout6">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button5"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator6"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator6">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout7">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button6"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator7"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator7">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout8">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button7"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator8"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator8">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout9">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button8"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator9"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator9">
+
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/list_layout10">
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/list_button9"
+							android:textColor="#ffffff"
+							android:textAlignment="center"
+							android:text="manipulator10"/>
+					<ListView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/manipulator10">
+					</ListView>
+				</LinearLayout>
+			</LinearLayout>
+		</HorizontalScrollView>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="310dp"
+				app:srcCompat="?android:attr/colorAccent"
+				android:id="@+id/gameField"
+				android:layout_marginBottom="1dp"
+				android:layout_marginEnd="0dp"/>
+
+	</RelativeLayout>
+	<LinearLayout android:layout_width="wrap_content"
+	              android:layout_height="wrap_content"
+	              android:orientation="vertical"
+	              android:id="@+id/item_panel">
+		<Button android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="Reagents"
+		        android:id="@+id/reagents"/>
+		<ListView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:id="@+id/reagentsList">
+
+		</ListView>
+		<Button android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="Product"
+		        android:id="@+id/product"/>
+		<ListView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:id="@+id/productList">
+		</ListView>
+
+		<Button android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Manipulators"
+		        android:id="@+id/manipulators"/>
+		<ListView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:id="@+id/manipulatorList">
+
+		</ListView>
+
+		<Button android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="Operators"
+		        android:id="@+id/operators"/>
+		<ListView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="30dp"
+				android:id="@+id/operatorList">
+		</ListView>
+
+	</LinearLayout>
+	<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:id="@+id/operations2"
+			android:layout_alignParentRight="true">
+		<Button android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Drop"
+		        android:id="@+id/drop"
+		/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="Rotate \nRight" android:id="@+id/rright"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="Pull in"
+		        android:id="@+id/pull_in"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="Wait" android:id="@+id/wait"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="Delete\n all" android:id="@+id/deleteall"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="Settings"
+		        android:id="@+id/settings"/>
+
+	</LinearLayout>
+	<LinearLayout android:layout_width="wrap_content"
+	              android:layout_height="wrap_content"
+	              android:layout_toLeftOf="@id/operations2"
+	              android:orientation="vertical"
+	              android:id="@+id/operations1">
+		<Button android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Grab"
+		        android:id="@+id/grab"
+		/>
+		<Button android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Rotate\n Left"
+
+		        android:id="@+id/rleft"
+		/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="Pull out"
+		        android:id="@+id/pull_out"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="return"
+		        android:id="@+id/returnButton"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="delete\n" android:id="@+id/delete"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+		        android:text="EXIT"
+		        android:id="@+id/exit"
+		/>
+		<TextView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:id="@+id/choosen_item"/>
 
 
-
-        <ListView android:layout_width="match_parent"
-                  android:layout_height="100dp"
-                  android:layout_alignParentBottom="true"
-                  android:layout_marginBottom="-2dp">
-        </ListView>
-
-
-
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="310dp"
-                app:srcCompat="?android:attr/colorAccent"
-                android:id="@+id/gameField"
-                android:layout_marginBottom="1dp"
-                android:layout_marginEnd="0dp"/>
-
-    </RelativeLayout>
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:id="@+id/item_panel">
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Reagents"
-                android:id="@+id/reagents"/>
-        <ListView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/reagentsList">
-
-        </ListView>
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Product"
-                android:id="@+id/product"/>
-        <ListView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/productList">
-        </ListView>
-
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Manipulators"
-                android:id="@+id/manipulators"/>
-        <ListView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/manipulatorList">
-
-        </ListView>
-
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Operators"
-                android:id="@+id/operators"/>
-        <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:id="@+id/operatorList">
-        </ListView>
-
-    </LinearLayout>
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/operations2"
-            android:layout_alignParentRight="true">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Drop"
-                android:id="@+id/drop"
-        />
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Rotate \nRight" android:id="@+id/rright"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Pull in"
-                android:id="@+id/pull_in"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Wait" android:id="@+id/wait"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Delete\n all" android:id="@+id/deleteall"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Settings"
-                android:id="@+id/settings"/>
-
-    </LinearLayout>
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_toLeftOf="@id/operations2"
-                  android:orientation="vertical"
-                  android:id="@+id/operations1">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grab"
-                android:id="@+id/grab"
-        />
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rotate\n Left"
-
-                android:id="@+id/rleft"
-        />
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Pull out"
-                android:id="@+id/pull_out"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="return"
-                android:id="@+id/returnButton"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="delete\n" android:id="@+id/delete"/>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="EXIT"
-                android:id="@+id/exit"
-        />
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/choosen_item"/>
-
-
-    </LinearLayout>
+	</LinearLayout>
 
 </RelativeLayout>

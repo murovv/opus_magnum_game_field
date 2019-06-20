@@ -301,14 +301,19 @@ class MainActivity : AppCompatActivity() {
                         if((man!=null)&&man.name=="Manipulator"){
                             val manip = Manipulator(this, man.cost,null, engine, man.name,
                                 man.mainCellCoordinates, man.rot, man.getimgSecondCell())
-                            manip.performAlgo(actions, Canvas())//ОПАСНО
+                            manip.performAlgo(actions, Canvas(), gameField, this)//ОПАСНО
                             manip.coordinates  = manip.countCoordinates()
                             manip.chooseBitmap()
                             Log.i("Manipulator state",""+man.rot)
                             engine.addElementToGameField(manip,man.getMainCellCoordinates()[0],man.getMainCellCoordinates()[1])
                             updateGameField()
                             if(engine.isWin){
-                                finish()
+                                val aboutDialog = AlertDialog.Builder(this).setMessage("You Win")
+                                    .setPositiveButton("Return to menu") { _, _ ->
+                                        finish()
+                                    }.create()
+
+                                aboutDialog.show()
                             }
                         }
                     }

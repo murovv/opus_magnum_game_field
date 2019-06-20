@@ -13,7 +13,7 @@ open class Reagents(
     numberOfCells: Int
 ) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells) {
 
-    var amount: Int? = null
+
 
     var saltState = false
 

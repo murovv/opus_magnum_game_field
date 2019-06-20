@@ -12,5 +12,5 @@ open class Product(
     numberOfCells: Int,
     img: Bitmap? = null
 ) : Element(context, cost, name, mainCellCoordinates, rot, numberOfCells, img = img) {
-    var amount: Int? = null
+
 }

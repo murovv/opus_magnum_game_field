@@ -26,10 +26,16 @@ import com.example.opus_magnum_game_field.Objects.Reagents
 
 fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
     val params:LinearLayout.LayoutParams
-    if(listView.adapter.count==1&&listView.adapter.getItem(0).toString().toInt()==0){
-        val item = listView.adapter.getView(0, null, listView)
-        item.measure(0, 0)
-        params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0)
+    if (listView.adapter.getItem(0).toString().matches(Regex("[0-9]*"))){
+
+        if(listView.adapter.count==1&&listView.adapter.getItem(0).toString().toInt()==0){
+            val item = listView.adapter.getView(0, null, listView)
+            item.measure(0, 0)
+            params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0)
+        }else{
+            params= LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
+        }
+
     }
     else if (listView.adapter.count>2){
         val item = listView.adapter.getView(0, null, listView)

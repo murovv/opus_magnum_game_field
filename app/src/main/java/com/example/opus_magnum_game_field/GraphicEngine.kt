@@ -100,6 +100,7 @@ class GraphicEngine {
                             elements.coordinates!![1][1] * heightOfCell * 1.0F + 0.5F * heightOfCell
                         }
                         Log.i("Coordinates of picture", "x = $absoluteX y = $absoluteY")
+
                         canvas.drawBitmap(
                             Bitmap.createScaledBitmap(elements.getimgSecondCell()!!, widthOfCell, heightOfCell, true),
                             absoluteX, absoluteY, Paint()

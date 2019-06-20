@@ -52,21 +52,20 @@ fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
 
     return params
 }
-
-enum class ElementTypes {
-    Reagent, Product, Operator, Manipulator
+enum class ElementTypes{
+    Reagent,Product,Operator,Manipulator
 }
 
 class MainActivity : AppCompatActivity() {
-    private fun getElement(name: String, type: ElementTypes): Element? {
+    private fun getElement(name:String, type:ElementTypes): Element? {
         val xrp = resources.getXml(R.xml.lvl1)
-        var cost: Int = 0
-        var numOfCells: Int = 0
-        while (xrp.eventType != XmlResourceParser.END_DOCUMENT) {
-            if (type == ElementTypes.Reagent && xrp.getAttributeValue(null, "name") == name) {
-                val amount: Int = xrp.getAttributeValue(null, "amount").toInt()
-                cost = xrp.getAttributeValue(null, "cost").toInt()
-                numOfCells = xrp.getAttributeValue(null, "numOfCells").toInt()
+        var cost:Int=0
+        var numOfCells:Int = 0
+        while(xrp.eventType!=XmlResourceParser.END_DOCUMENT){
+            if(type==ElementTypes.Reagent && xrp.getAttributeValue(null,"name")==name){
+                val amount:Int = xrp.getAttributeValue(null,"amount").toInt()
+                cost = xrp.getAttributeValue(null,"cost").toInt()
+                numOfCells= xrp.getAttributeValue(null,"numOfCells").toInt()
                 break
             }
             if(type==ElementTypes.Manipulator && xrp.getAttributeValue(null,"name")==name){
@@ -76,21 +75,21 @@ class MainActivity : AppCompatActivity() {
                 return Manipulator(this,cost,null,engine,name, arrayOf(0,0),30,null)
                 break
             }
-            if (type == ElementTypes.Operator && xrp.getAttributeValue(null, "name") == name) {
-                val amount: Int = xrp.getAttributeValue(null, "amount").toInt()
-                cost = xrp.getAttributeValue(null, "cost").toInt()
-                numOfCells = xrp.getAttributeValue(null, "numOfCells").toInt()
+            if(type==ElementTypes.Operator && xrp.getAttributeValue(null,"name")==name){
+                val amount:Int = xrp.getAttributeValue(null,"amount").toInt()
+                cost = xrp.getAttributeValue(null,"cost").toInt()
+                numOfCells= xrp.getAttributeValue(null,"numOfCells").toInt()
                 break
             }
-            if (type == ElementTypes.Product && xrp.getAttributeValue(null, "name") == name) {
-                val amount: Int = xrp.getAttributeValue(null, "amount").toInt()
-                cost = xrp.getAttributeValue(null, "cost").toInt()
-                numOfCells = xrp.getAttributeValue(null, "numOfCells").toInt()
+            if(type==ElementTypes.Product && xrp.getAttributeValue(null,"name")==name){
+                val amount:Int = xrp.getAttributeValue(null,"amount").toInt()
+                cost = xrp.getAttributeValue(null,"cost").toInt()
+                numOfCells= xrp.getAttributeValue(null,"numOfCells").toInt()
                 break
             }
             xrp.next()
         }
-        return Element(this, cost, name, Array(2) { 0 }, 30, numOfCells)
+        return Element(this,cost,name, Array(2) {0},30,numOfCells)
     }
 
     var chosenElement: Element? = null
@@ -168,71 +167,70 @@ class MainActivity : AppCompatActivity() {
             productList.adapter = prodAdapter
             updateLists()
         }
-        operatorList.setOnItemClickListener { parent, view, position, id ->
+        operatorList.setOnItemClickListener{parent, view, position, id ->
             val textView: TextView = view as TextView
 
-            chosenElement = getElement(textView.text.toString(), ElementTypes.Operator)
+            chosenElement = getElement(textView.text.toString(),ElementTypes.Operator)
             choosen_item.text = textView.text.toString()
         }
-        manipulatorList.setOnItemClickListener { parent, view, position, id ->
+        manipulatorList.setOnItemClickListener{parent, view, position, id->
             val textView: TextView = view as TextView
-            chosenElement = getElement(textView.text.toString(), ElementTypes.Manipulator)
+            chosenElement = getElement(textView.text.toString(),ElementTypes.Manipulator)
             choosen_item.text = textView.text.toString()
         }
-        productList.setOnItemClickListener { parent, view, position, id ->
+        productList.setOnItemClickListener{parent, view, position, id->
             val textView: TextView = view as TextView
-            chosenElement = getElement(textView.text.toString(), ElementTypes.Product)
+            chosenElement = getElement(textView.text.toString(),ElementTypes.Product)
             choosen_item.text = textView.text.toString()
         }
-        reagentsList.setOnItemClickListener { parent, view, position, id ->
+        reagentsList.setOnItemClickListener{parent, view, position, id->
             val textView: TextView = view as TextView
-            chosenElement = getElement(textView.text.toString(), ElementTypes.Reagent)
+            chosenElement = getElement(textView.text.toString(),ElementTypes.Reagent)
             choosen_item.text = textView.text.toString()
         }
 
-
-        var actions = ArrayList<OperatorName>()
         var actionsStringNames = ArrayList<String>()
 
         var adapter = ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, actionsStringNames)
+        manipulator1.adapter=adapter
 
         grab.setOnClickListener {
             actions.add(OperatorName.GRAB)
             actionsStringNames.add("grab")
-            if (choosen_item.text.toString() == "первый") {
-                manipulator1.adapter = adapter
-            } else {
-                if (choosen_item.text.toString() == "второй") {
-                    manipulator1.adapter = adapter
-                } else {
-                    manipulator2.adapter = adapter
-                }
-            }
+            adapter.notifyDataSetChanged()
         }
         drop.setOnClickListener {
             actions.add(OperatorName.DROP)
             actionsStringNames.add("drop")
+            adapter.notifyDataSetChanged()
         }
         rleft.setOnClickListener {
             actions.add(OperatorName.ROTATE_LEFT)
             actionsStringNames.add("rleft")
+            adapter.notifyDataSetChanged()
         }
         rright.setOnClickListener {
             actions.add(OperatorName.ROTATE_RIGHT)
             actionsStringNames.add("rright")
+            adapter.notifyDataSetChanged()
         }
         wait.setOnClickListener {
             actions.add(OperatorName.WAIT)
             actionsStringNames.add("wait")
+            adapter.notifyDataSetChanged()
         }
         returnButton.setOnClickListener {
             actions.add(OperatorName.RETURN_TO_START)
             actionsStringNames.add("returnToStart")
+            adapter.notifyDataSetChanged()
         }
         delete.setOnClickListener {
-            actions.removeAt(actions.size - 1)
-            actionsStringNames.removeAt(actions.size-1)
+            if(actions.size!=0) {
+                actions.removeAt(actions.size - 1)
+                actionsStringNames.removeAt(actions.size - 1)
+            }
         }
+
         deleteall.setOnClickListener {
             actions.clear()
             actionsStringNames.clear()
@@ -241,9 +239,9 @@ class MainActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Task")
             builder.setMessage("Перенесите Землю в Продукт при помощи манипулятора")
-            builder.setPositiveButton("ok", DialogInterface.OnClickListener{dialog,listener->
+            builder.setPositiveButton("ok") { dialog, listener->
                 dialog.dismiss()
-            })
+            }
             builder.create().show()
         }
     }

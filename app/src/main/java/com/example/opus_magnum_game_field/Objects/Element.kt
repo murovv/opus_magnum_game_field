@@ -54,6 +54,9 @@ open class Element(
     open fun setMainCellCoordinates(mainCellCoordinates: Array<Int>) {
         this.mainCellCoordinates = mainCellCoordinates
     }
+    open fun setImg(img:Bitmap){
+        this.img=img
+    }
     fun countCoordinates():Array<Array<Int>>{
         coordinates = if(numberOfCells==1){
             arrayOf(mainCellCoordinates)

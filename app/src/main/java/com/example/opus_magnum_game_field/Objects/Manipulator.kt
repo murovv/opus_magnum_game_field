@@ -2,6 +2,7 @@ package com.example.opus_magnum_game_field.Objects
 
 import android.content.Context
 import android.graphics.*
+import android.util.Log
 import com.example.opus_magnum_game_field.Engine
 import com.example.opus_magnum_game_field.R
 import java.time.temporal.TemporalAmount
@@ -10,6 +11,7 @@ class Manipulator(
     context: Context, cost: Int,
     img: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_base),
     var engine: Engine,
+
     name: String, mainCellCoordinates: Array<Int>, rot: Int,
     imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_ring)) :
     Element(context, cost,name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
@@ -22,6 +24,7 @@ class Manipulator(
 
     fun rotateLeft(canvas: Canvas) {
         //animateRotateLeft(canvas)
+
         rot += 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -114,6 +117,7 @@ class Manipulator(
     fun performAlgo(actions:ArrayList<OperatorName>,canvas: Canvas) {
         var waitCalls = 0
         for(action in actions){
+            Log.d("MyLog","performer Called")
             if (action == OperatorName.ROTATE_LEFT) {
                 rotateLeft(canvas)
             }
@@ -131,7 +135,6 @@ class Manipulator(
                 waitCalls = 0
             }
             if (action == OperatorName.WAIT) {
-                Thread.sleep(1000)
                 waitCalls++
             }
         }

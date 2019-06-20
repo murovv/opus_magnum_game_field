@@ -89,7 +89,8 @@
 							android:id="@+id/list_button0"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator1"/>
+							android:text="manipulator1"
+					android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -108,7 +109,8 @@
 							android:id="@+id/list_button1"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator2"/>
+							android:text="manipulator2"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -127,7 +129,8 @@
 							android:id="@+id/list_button2"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator3"/>
+							android:text="manipulator3"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -147,7 +150,8 @@
 							android:id="@+id/list_button3"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator4"/>
+							android:text="manipulator4"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -167,7 +171,8 @@
 							android:id="@+id/list_button4"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator5"/>
+							android:text="manipulator5"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -187,7 +192,8 @@
 							android:id="@+id/list_button5"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator6"/>
+							android:text="manipulator6"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -207,7 +213,8 @@
 							android:id="@+id/list_button6"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator7"/>
+							android:text="manipulator7"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -227,7 +234,8 @@
 							android:id="@+id/list_button7"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator8"/>
+							android:text="manipulator8"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
@@ -251,7 +259,8 @@
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
-							android:id="@+id/manipulator9">
+							android:id="@+id/manipulator9"
+							android:layout_marginHorizontal="20dp">
 
 					</ListView>
 				</LinearLayout>
@@ -267,7 +276,8 @@
 							android:id="@+id/list_button9"
 							android:textColor="#ffffff"
 							android:textAlignment="center"
-							android:text="manipulator10"/>
+							android:text="manipulator10"
+							android:layout_marginHorizontal="20dp"/>
 					<ListView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"

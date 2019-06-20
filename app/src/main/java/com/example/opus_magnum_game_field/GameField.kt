@@ -239,7 +239,7 @@ class MainActivity : AppCompatActivity() {
                     chosenElement!!.setAmountMinusOne()
                     engine.addElementToGameField(
                         chosenElement,
-                        chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1]
+                        chosenElement!!.mainCellCoordinates[0], chosenElement!!.mainCellCoordinates[1], true
                     )
 
                 } else if (engine.getGameField()
@@ -270,13 +270,25 @@ class MainActivity : AppCompatActivity() {
                             val manip = Manipulator(this, man.cost,null, engine, man.name,
                                 man.mainCellCoordinates, man.rot, man.getimgSecondCell())
                             manip.performAlgo(actions, Canvas())//ОПАСНО
-                            manip.coordinates=manip.countCoordinates()
+                            manip.coordinates  = manip.countCoordinates()
                             manip.chooseBitmap()
                             Log.i("Manipulator state",""+man.rot)
                             engine.addElementToGameField(manip,man.getMainCellCoordinates()[0],man.getMainCellCoordinates()[1])
                             updateGameField()
+                            if(engine.isWin){
+                                finish()
+                            }
                         }
                     }
+                }
+            }
+            delete_object.setOnClickListener{
+                if (touchedElement != null) {
+                    engine.addElementToGameField(
+                        null,
+                        touchedElement!!.getMainCellCoordinates()[0],
+                        touchedElement!!.getMainCellCoordinates()[1])
+                    updateGameField()
                 }
             }
         }

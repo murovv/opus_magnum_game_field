@@ -6,48 +6,19 @@
                 cost="1"
                 numOfCells="1">
         </Reagent>
-        <Reagent amount="1"
-                 name="ереванский шпек"
-                 cost="99999999"
-                 numOfCells="1">
-        </Reagent>
     </Reagents>
     <Products>
         <Product
                 amount="2"
-                name="Тиф"
+                name="Earth Product"
                 cost="150"
                 numOfCells="1">
-        </Product>
-        <Product
-                amount="1"
-                name="Сифилис"
-                cost="0"
-                numOfCells="2">
-        </Product>
-        <Product
-                amount="1"
-                name="Проказа"
-                cost="0"
-                numOfCells="2">
         </Product>
     </Products>
     <Operators>
         <Operator
                 amount="1"
                 name="помогите"
-                cost="0"
-                numOfCells="2">
-        </Operator>
-        <Operator
-                amount="1"
-                name="спасите"
-                cost="0"
-                numOfCells="2">
-        </Operator>
-        <Operator
-                amount="1"
-                name="я устал сожалеть устал сомневаться просто провирка на длинный текст"
                 cost="0"
                 numOfCells="2">
         </Operator>
@@ -58,18 +29,6 @@
                 name="Manipulator"
                 cost="0"
                 numOfCells="2">
-        </Manipulator>
-        <Manipulator
-                amount="1"
-                name="второй"
-                cost="123"
-                numOfCells="2">
-        </Manipulator>
-        <Manipulator
-                amount="2"
-                name="третий"
-                cost="4"
-                numOfCells="1">
         </Manipulator>
     </Manipulators>
 </Level>

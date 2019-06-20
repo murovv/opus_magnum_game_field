@@ -48,10 +48,18 @@ class Manipulator(
     }
 
     fun drop() {
-        val buffer = takenElement
-        takenElement = null
-        if(buffer!=null) {
-            engine.addElementToGameField(buffer, coordinateOfEar[0], coordinateOfEar[1])
+        if ((takenElement != null) &&
+            (engine.getGameField()[takenElement!!.mainCellCoordinates[0]][takenElement!!.mainCellCoordinates[1]] != null)) {
+            if (engine.getGameField()[takenElement!!.mainCellCoordinates[0]][takenElement!!.mainCellCoordinates[1]]!!.name ==
+                takenElement!!.name + " Product") {
+                engine.win()
+            }
+        } else{
+            val buffer = takenElement
+            takenElement = null
+            if (buffer != null) {
+                engine.addElementToGameField(buffer, coordinateOfEar[0], coordinateOfEar[1])
+            }
         }
     }
 

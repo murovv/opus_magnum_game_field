@@ -3,8 +3,12 @@ package com.example.opus_magnum_game_field.Objects
 import android.content.Context
 import android.graphics.*
 import android.util.Log
+import android.widget.ImageView
+import androidx.core.graphics.applyCanvas
 import com.example.opus_magnum_game_field.Engine
+import com.example.opus_magnum_game_field.GraphicEngine
 import com.example.opus_magnum_game_field.R
+import kotlinx.android.synthetic.main.activity_main.*
 import java.time.temporal.TemporalAmount
 
 class Manipulator(
@@ -14,7 +18,7 @@ class Manipulator(
 
     name: String, mainCellCoordinates: Array<Int>, rot: Int,
     imgSecondCell: Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.manipulator_ring)) :
-    Element(context, cost,name, mainCellCoordinates, rot, numberOfCells = 2, img = img, imgSecondCell = imgSecondCell) {
+    Element(context, cost,name, mainCellCoordinates, rot, numberOfCells = 2, img = BitmapFactory.decodeResource(context.resources,R.drawable.manipulator), imgSecondCell = imgSecondCell) {
 
     var takenElement:Element? = null
 
@@ -23,8 +27,7 @@ class Manipulator(
     val startRotation = rot
 
     fun rotateLeft(canvas: Canvas) {
-        //animateRotateLeft(canvas)
-
+        animateRotateLeft(canvas)
         rot += 60
         countCoordinates()
         coordinateOfEar = coordinates!![1]
@@ -42,7 +45,7 @@ class Manipulator(
             takenElement!!.setMainCellCoordinates(coordinateOfEar)
             takenElement!!.countCoordinates()
         }
-        //animateRotateRight(canvas)
+        animateRotateRight(canvas)
     }
 
     fun grab() {
@@ -91,6 +94,8 @@ class Manipulator(
                 ((canvas.height * 3 / 23) * mainCellCoordinates[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
+
+                Thread.sleep(1000/60)
         }
     }
 
@@ -108,13 +113,14 @@ class Manipulator(
                 ((canvas.height * 3 / 23) * mainCellCoordinates[1]).toFloat(), paint
             )
             canvas.rotate(((rot + i) * Math.PI / 180).toFloat())
+            Thread.sleep(1000/60)
         }
     }
 
     private fun animationReturn(canvas: Canvas) {
         //TODO Реализовать анимацию возвращения к изначальной позиции без коллизий
     }
-    fun performAlgo(actions:ArrayList<OperatorName>,canvas: Canvas) {
+    fun performAlgo(actions:ArrayList<OperatorName>,canvas: Canvas, gameField : ImageView, context : Context) {
         var waitCalls = 0
         for(action in actions){
             Log.d("MyLog","performer Called")
@@ -137,6 +143,15 @@ class Manipulator(
             if (action == OperatorName.WAIT) {
                 waitCalls++
             }
+            coordinates = countCoordinates()
+            chooseBitmap()
+            engine.addElementToGameField(this, this.mainCellCoordinates[0],this.mainCellCoordinates[1])
+            val bitmap1 = Bitmap.createBitmap(gameField.width, gameField.height, Bitmap.Config.ARGB_8888)
+            Log.i("Manipulator state1",""+rot)
+            bitmap1!!.applyCanvas {
+                GraphicEngine().drawGameField(context, this, engine.getGameField())
+            }
+            gameField.setImageBitmap(bitmap1)
         }
     }
 

@@ -9,9 +9,11 @@ import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 
 
 import android.view.View
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.opus_magnum_game_field.Objects.Element
@@ -23,7 +25,7 @@ import androidx.core.graphics.drawable.toDrawable
 import com.example.opus_magnum_game_field.Objects.Manipulator
 import com.example.opus_magnum_game_field.Objects.OperatorName
 import com.example.opus_magnum_game_field.Objects.Reagents
-
+import kotlinx.android.synthetic.main.how_to_alert.*
 
 
 fun listSizeCheck( listView: ListView): LinearLayout.LayoutParams {
@@ -245,7 +247,20 @@ class MainActivity : AppCompatActivity() {
             builder.setPositiveButton("ok") { dialog, listener->
                 dialog.dismiss()
             }
+            builder.setNeutralButton("How To Play") { dialog, listener->
+                dialog.dismiss()
+                val builderHowTo = AlertDialog.Builder(this)
+                builderHowTo.setTitle("How to play")
+                builderHowTo.setMessage("")
+
+                builderHowTo.setPositiveButton("ok"){dialog, listener->
+                    dialog.dismiss()
+                }
+                builderHowTo.setView(layoutInflater.inflate(R.layout.how_to_alert,null))
+                builderHowTo.create().show()
+            }
             builder.create().show()
+
         }
     }
 

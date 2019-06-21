@@ -16,12 +16,6 @@
         </Product>
     </Products>
     <Operators>
-        <Operator
-                amount="1"
-                name="помогите"
-                cost="0"
-                numOfCells="2">
-        </Operator>
     </Operators>
     <Manipulators>
         <Manipulator

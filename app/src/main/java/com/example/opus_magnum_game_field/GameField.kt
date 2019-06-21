@@ -237,7 +237,10 @@ class MainActivity : AppCompatActivity() {
         task.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Task")
-            builder.setMessage("Перенесите Землю в Продукт при помощи манипулятора")
+            builder.setMessage("Перенесите Землю в Продукт при помощи манипулятора\n" +
+                    "Задать алгоритм для манипулятора вы можете при помощи кнопок справа\n" +
+                    "Ваш алгоритм отобразится в нижней части экрана")
+
             builder.setPositiveButton("ok") { dialog, listener->
                 dialog.dismiss()
             }

@@ -23,6 +23,7 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:text="exit"
                     android:id="@+id/button_exit"
             />
@@ -39,6 +40,7 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:text="settings"
                     android:id="@+id/button_settings"
             />
@@ -67,6 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl1"
+                        android:textColor="#000000"
                         android:text="level 1"
                         android:background="@android:drawable/btn_star_big_on"/>
 
@@ -83,6 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl2"
+                        android:textColor="#000000"
                         android:text="level 2"
                 />
 
@@ -99,6 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl3"
+                        android:textColor="#000000"
                         android:text="level 3"
                 />
 
@@ -115,6 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl4"
+                        android:textColor="#000000"
                         android:text="level 4"
                 />
 
@@ -130,6 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl5"
+                        android:textColor="#000000"
                         android:text="level 5"
                 />
 
@@ -146,6 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl6"
+                        android:textColor="#000000"
                         android:text="level 6"
                 />
 
@@ -162,6 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl7"
+                        android:textColor="#000000"
                         android:text="level 7"
                 />
 
@@ -178,6 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl8"
+                        android:textColor="#000000"
                         android:text="level 8"
                 />
 
@@ -194,6 +204,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl9"
+                        android:textColor="#000000"
                         android:text="level 9"
                 />
 
@@ -210,6 +221,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl10"
+                        android:textColor="#000000"
                         android:text="level 10"
                 />
 
@@ -226,6 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl11"
+                        android:textColor="#000000"
                         android:text="level 11"
                 />
 
@@ -242,6 +255,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/bt_lvl12"
+                        android:textColor="#000000"
                         android:text="level 12"
                 />
 
